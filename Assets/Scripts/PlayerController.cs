@@ -6,10 +6,12 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] float moveSpeed = 4f;
 
+    Animator playerAnim;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        playerAnim = GetComponent<Animator>(); 
     }
 
     // Update is called once per frame
@@ -24,5 +26,13 @@ public class PlayerController : MonoBehaviour
         moveInput.Normalize();
 
         transform.position += moveInput * moveSpeed * Time.deltaTime;
+
+        if(moveInput != Vector3.zero)
+        {
+            playerAnim.SetBool("isMoving", true);
+        } else
+        {
+            playerAnim.SetBool("isMoving", false);
+        }
     }
 }
