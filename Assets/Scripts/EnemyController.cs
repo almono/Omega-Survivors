@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    public float moveSpeed = 1f;
+    public float moveSpeed = 1f, damageValue = 10f;
     private Rigidbody2D body;
     private Transform target;
 
@@ -19,5 +19,13 @@ public class EnemyController : MonoBehaviour
     void Update()
     {
         body.velocity = (target.position - transform.position).normalized * moveSpeed;
+    }
+
+    public void OnCollisionEnter2D(Collision2D other)
+    {
+        if(other.gameObject.CompareTag("Player"))
+        {
+            PlayerHealthController.instance.TakeDamage(damageValue);
+        }
     }
 }
