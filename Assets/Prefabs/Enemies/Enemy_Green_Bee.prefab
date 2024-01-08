@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 2074763740720956727}
   - component: {fileID: 7668391168360066829}
   m_Layer: 0
-  m_Name: Enemy1
-  m_TagString: Untagged
+  m_Name: Enemy_Green_Bee
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -111,6 +111,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 1
+  damageValue: 10
+  hitWaitTime: 0.5
 --- !u!114 &7668391168360066829
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,7 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e70b367522e8f0d44a16541ef029404f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
+  sprite: {fileID: 2043809343060108549}
   animSpeed: 0.5
   minSize: 0.9
   maxSize: 1.1

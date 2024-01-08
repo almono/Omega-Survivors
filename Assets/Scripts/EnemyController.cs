@@ -7,14 +7,19 @@ public class EnemyController : MonoBehaviour
     public float moveSpeed = 1f, damageValue = 10f, hitWaitTime = 0.5f;
     private Rigidbody2D body;
     private Transform target;
-    private SpriteRenderer enemySprite;
+    public SpriteRenderer enemySprite;
 
     private float hitCounter;
+    public bool isLookingRight = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        target = FindObjectOfType<PlayerController>().transform;
+        if(FindObjectOfType<PlayerController>())
+        {
+            target = FindObjectOfType<PlayerController>().transform;
+        }
+       
         body = GetComponent<Rigidbody2D>();
         enemySprite = GetComponentInChildren<SpriteRenderer>();
     }
@@ -59,11 +64,11 @@ public class EnemyController : MonoBehaviour
         // flip sprite if the enemy is on the left/right of player
         if (transform.position.x > target.position.x)
         {
-            enemySprite.transform.localScale = new Vector2(currentScale, 1f);
+            enemySprite.transform.localScale = new Vector2(Mathf.Abs(currentScale), 1f);
         }
         else
         {
-            enemySprite.transform.localScale = new Vector2(-currentScale, 1f);
+            enemySprite.transform.localScale = new Vector2(Mathf.Abs(currentScale) * -1, 1f);
         }
     }
 }

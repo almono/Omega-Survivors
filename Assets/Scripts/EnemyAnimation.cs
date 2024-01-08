@@ -17,7 +17,7 @@ public class EnemyAnimation : MonoBehaviour
 
     void Update()
     {
-        sprite.localScale = Vector3.MoveTowards(transform.localScale, Vector3.one * activeSize, animSpeed * Time.deltaTime);
+        /*sprite.localScale = Vector3.MoveTowards(transform.localScale, Vector3.one * activeSize, animSpeed * Time.deltaTime);
 
         if(sprite.localScale.x == activeSize) 
         {
@@ -28,6 +28,6 @@ public class EnemyAnimation : MonoBehaviour
             {
                 activeSize = maxSize;
             }
-        }
+        } */
     }
 }
