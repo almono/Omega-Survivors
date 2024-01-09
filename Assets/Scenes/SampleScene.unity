@@ -173,6 +173,7 @@ MonoBehaviour:
   minSpawnPoint: {fileID: 1229845842}
   maxSpawnPoint: {fileID: 959468793}
   timeToSpawn: 0.1
+  checkPerFrame: 10
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -427,7 +428,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 0000000067c8a178cdb12748cd705117
+  m_ApplyToSortingLayers: 0000000067c8a178cdb12748cd70511783b74827
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -7327,6 +7328,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3579085903690123499, guid: 1466c6dfb7f543b408ad14ee9ed0b298, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 659076995
+      objectReference: {fileID: 0}
     - target: {fileID: 4535663452304595084, guid: 1466c6dfb7f543b408ad14ee9ed0b298, type: 3}
       propertyPath: m_Name
       value: Player

@@ -10,14 +10,14 @@ public class EnemyController : MonoBehaviour
     public SpriteRenderer enemySprite;
 
     private float hitCounter;
-    public bool isLookingRight = false;
+    public bool despawnAtFarDistance = true; // flag to despawn at far distance
 
     // Start is called before the first frame update
     void Start()
     {
-        if(FindObjectOfType<PlayerController>())
+        if(PlayerHealthController.instance)
         {
-            target = FindObjectOfType<PlayerController>().transform;
+            target = PlayerHealthController.instance.transform;
         }
        
         body = GetComponent<Rigidbody2D>();
