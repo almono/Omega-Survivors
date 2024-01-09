@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 38399079}
   - component: {fileID: 38399081}
   - component: {fileID: 38399080}
+  - component: {fileID: 38399082}
   m_Layer: 0
   m_Name: Fireball
   m_TagString: Untagged
@@ -243,6 +244,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &38399082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 38399078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dba2a6949e609d4fa6702af7463f5ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageValue: 10
 --- !u!1 &44706155
 GameObject:
   m_ObjectHideFlags: 0

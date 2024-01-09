@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    public float moveSpeed = 1f, damageValue = 10f, hitWaitTime = 0.5f;
+    public float moveSpeed = 1f, damageValue = 10f, hitWaitTime = 0.5f, health = 5f;
     private Rigidbody2D body;
     private Transform target;
     public SpriteRenderer enemySprite;
@@ -69,6 +69,16 @@ public class EnemyController : MonoBehaviour
         else
         {
             enemySprite.transform.localScale = new Vector2(Mathf.Abs(currentScale) * -1, 1f);
+        }
+    }
+
+    public void TakeDamage(float damageValue)
+    {
+        health -= damageValue;
+
+        if(health <= 0)
+        {
+            Destroy(gameObject);
         }
     }
 }
