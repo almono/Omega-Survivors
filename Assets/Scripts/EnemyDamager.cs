@@ -6,6 +6,7 @@ public class EnemyDamager : MonoBehaviour
 {
     public float damageValue = 10f;
     public float lifetime = 3f, growSpeed = 3f;
+    public bool hasKnockback = true;
     private Vector3 targetSize;
 
     // Start is called before the first frame update
@@ -38,7 +39,7 @@ public class EnemyDamager : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Enemy"))
         {
-            other.GetComponent<EnemyController>().TakeDamage(damageValue);
+            other.GetComponent<EnemyController>().TakeDamage(damageValue, hasKnockback);
         }
     }
 }

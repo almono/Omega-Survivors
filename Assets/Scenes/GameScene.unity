@@ -260,6 +260,7 @@ MonoBehaviour:
   damageValue: 10
   lifetime: 3
   growSpeed: 3
+  hasKnockback: 1
 --- !u!1 &44706155
 GameObject:
   m_ObjectHideFlags: 0

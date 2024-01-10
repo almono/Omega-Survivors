@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    public float moveSpeed = 1f, damageValue = 10f, hitWaitTime = 0.5f, health = 5f;
+    public float moveSpeed = 1f, damageValue = 10f, hitWaitTime = 0.5f, health = 5f, knockbackTime = 0.05f;
     private Rigidbody2D body;
     private Transform target;
     public SpriteRenderer enemySprite;
 
-    private float hitCounter;
+    private float hitCounter, knockbackCounter;
     public bool despawnAtFarDistance = true; // flag to despawn at far distance
 
     // Start is called before the first frame update
@@ -27,6 +27,21 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(knockbackCounter > 0)
+        {
+            knockbackCounter -= Time.deltaTime;
+
+            if(moveSpeed > 0)
+            {
+                moveSpeed = -moveSpeed * 10f; // knockback
+            }
+
+            if(knockbackCounter <= 0)
+            {
+                moveSpeed = Mathf.Abs(moveSpeed * 0.1f);
+            }
+        }
+
         if(target != null)
         {
             FlipSprite();
@@ -79,6 +94,16 @@ public class EnemyController : MonoBehaviour
         if(health <= 0)
         {
             Destroy(gameObject);
+        }
+    }
+
+    public void TakeDamage(float damageValue, bool applyKnockback)
+    {
+        TakeDamage(damageValue);
+
+        if(applyKnockback)
+        {
+            knockbackCounter = knockbackTime;
         }
     }
 }

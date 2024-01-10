@@ -113,6 +113,10 @@ MonoBehaviour:
   moveSpeed: 1
   damageValue: 10
   hitWaitTime: 0.5
+  health: 5
+  knockbackTime: 0.05
+  enemySprite: {fileID: 0}
+  despawnAtFarDistance: 1
 --- !u!114 &7668391168360066829
 MonoBehaviour:
   m_ObjectHideFlags: 0
