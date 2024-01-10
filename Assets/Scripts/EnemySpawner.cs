@@ -29,13 +29,17 @@ public class EnemySpawner : MonoBehaviour
         if(spawnCounter > 0)
         {
             spawnCounter -= Time.deltaTime;
-        } else if (spawnCounter <= 0)
+        } else if (spawnCounter <= 0 && playerTarget)
         {
+            // make sure player exists to spawn enemies ( in case we are on death screen for too long )
             spawnCounter = timeToSpawn;
             SpawnEnemy();
         }
 
-        transform.position = playerTarget.position;
+        if(playerTarget)
+        {
+            transform.position = playerTarget.position;
+        }
 
         DespawnFarEnemies();
     }
