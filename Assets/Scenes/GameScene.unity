@@ -7124,7 +7124,7 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: 659076995
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!1 &754080834
@@ -7138,6 +7138,7 @@ GameObject:
   - component: {fileID: 754080835}
   - component: {fileID: 754080837}
   - component: {fileID: 754080836}
+  - component: {fileID: 754080838}
   m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -7261,6 +7262,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 754080834}
   m_CullTransparentMesh: 1
+--- !u!114 &754080838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 754080834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd2bb7ead938ab340963d8adc1d5f528, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageText: {fileID: 754080836}
+  textLifetime: 0.3
+  floatSpeed: 2
 --- !u!1 &959468792
 GameObject:
   m_ObjectHideFlags: 0
@@ -7492,6 +7508,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1992719885}
+  - component: {fileID: 1992719886}
   m_Layer: 0
   m_Name: DamageNumberController
   m_TagString: Untagged
@@ -7515,6 +7532,20 @@ Transform:
   - {fileID: 698424345}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1992719886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1992719884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 256337ba36484e54780344d14d84dc03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numberToSpawn: {fileID: 754080838}
+  numberCanvas: {fileID: 698424345}
 --- !u!1 &2025117722
 GameObject:
   m_ObjectHideFlags: 0

@@ -95,6 +95,8 @@ public class EnemyController : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        DamageNumberController.instance.SpawnDamageNumber(damageValue, transform.position);
     }
 
     public void TakeDamage(float damageValue, bool applyKnockback)
