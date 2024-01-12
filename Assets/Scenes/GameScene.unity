@@ -7145,7 +7145,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &754080835
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7627,6 +7627,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 625090644745062500, guid: 1466c6dfb7f543b408ad14ee9ed0b298, type: 3}
+      propertyPath: destroyParent
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4535663452304595084, guid: 1466c6dfb7f543b408ad14ee9ed0b298, type: 3}
       propertyPath: m_Name
       value: Player
