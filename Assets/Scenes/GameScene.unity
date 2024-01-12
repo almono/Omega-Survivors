@@ -174,6 +174,22 @@ MonoBehaviour:
   maxSpawnPoint: {fileID: 959468793}
   timeToSpawn: 0.1
   checkPerFrame: 10
+  enemyWaves:
+  - enemyToSpawn: {fileID: 3686941632962547824, guid: a070c8c112f53d14fa2a81725f220a68, type: 3}
+    waveLength: 5
+    timeBetweenSpawns: 1
+  - enemyToSpawn: {fileID: 5340509312562652562, guid: d622f22a74d02ee46828ddb9154b036a, type: 3}
+    waveLength: 5
+    timeBetweenSpawns: 0.2
+  - enemyToSpawn: {fileID: 4887380840194065421, guid: 18fd77a06d93bd54ba476319fe467b4d, type: 3}
+    waveLength: 5
+    timeBetweenSpawns: 0.2
+  - enemyToSpawn: {fileID: 3224568001281765782, guid: feaa7d90cf6412845997c96f82640a18, type: 3}
+    waveLength: 5
+    timeBetweenSpawns: 1
+  - enemyToSpawn: {fileID: 5355054207186018446, guid: 504af1ff683ace846badb9a50b6d1e80, type: 3}
+    waveLength: 1
+    timeBetweenSpawns: 0.1
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

@@ -15,18 +15,26 @@ public class EnemySpawner : MonoBehaviour
     public int checkPerFrame = 30; // limit amount of enemies checked every frame
     private int enemyToCheck; // index of currently checked enemy
 
+    public List<WaveInfo> enemyWaves;
+    private int currentWave;
+    private float waveCounter;
+
     // Start is called before the first frame update
     void Start()
     {
         spawnCounter = timeToSpawn; // add small delay before spawning first enemy
         playerTarget = PlayerHealthController.instance.transform;
         despawnDistance = Vector3.Distance(transform.position, maxSpawnPoint.position) + 2f; // allowed distance before we start despawning enemies
+
+        // ensure we start from wave 1
+        currentWave = -1;
+        GoToNextWave();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(spawnCounter > 0)
+        /*if(spawnCounter > 0)
         {
             spawnCounter -= Time.deltaTime;
         } else if (spawnCounter <= 0 && playerTarget)
@@ -34,21 +42,35 @@ public class EnemySpawner : MonoBehaviour
             // make sure player exists to spawn enemies ( in case we are on death screen for too long )
             spawnCounter = timeToSpawn;
             SpawnEnemy();
-        }
+        } */
 
         if(playerTarget)
         {
             transform.position = playerTarget.position;
+
+            if (currentWave < enemyWaves.Count)
+            {
+                waveCounter -= Time.deltaTime;
+
+                if(waveCounter <= 0 )
+                {
+                    GoToNextWave();
+                }
+
+                spawnCounter -= Time.deltaTime;
+
+                if(spawnCounter <= 0 )
+                {
+                    spawnCounter = enemyWaves[currentWave].timeBetweenSpawns;
+
+                    Vector3 spawnPoint = GetSpawnPointPosition();
+                    GameObject newEnemy = Instantiate(enemyWaves[currentWave].enemyToSpawn, spawnPoint, Quaternion.identity);
+                    enemyList.Add(newEnemy);
+                }
+            }
         }
 
         DespawnFarEnemies();
-    }
-
-    private void SpawnEnemy()
-    {
-        Vector3 spawnPoint = GetSpawnPointPosition();
-        GameObject newEnemy = Instantiate(enemyToSpawn, spawnPoint, transform.rotation);
-        enemyList.Add(newEnemy); // add new enemy to the list
     }
 
     private void DespawnFarEnemies()
@@ -118,4 +140,25 @@ public class EnemySpawner : MonoBehaviour
 
         return spawnPoint;
     }
+
+    public void GoToNextWave()
+    {
+        currentWave++;
+
+        if(currentWave >= enemyWaves.Count)
+        {
+            currentWave = enemyWaves.Count - 1;
+        }
+
+        waveCounter = enemyWaves[currentWave].waveLength;
+        spawnCounter = enemyWaves[currentWave].timeBetweenSpawns;
+    }
+}
+
+[System.Serializable]
+public class WaveInfo
+{
+    public GameObject enemyToSpawn;
+    public float waveLength = 10f;
+    public float timeBetweenSpawns = 1f;
 }
