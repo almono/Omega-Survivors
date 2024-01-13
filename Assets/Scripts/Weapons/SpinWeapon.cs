@@ -27,7 +27,10 @@ public class SpinWeapon : MonoBehaviour
         if(cooldownCounter <= 0)
         {
             cooldownCounter = cooldownTime;
-            Instantiate(fireballToSpawn, fireballHolder.position, fireballHolder.rotation, fireballHolder).gameObject.SetActive(true);
+            
+            // randomize the Z rotation to make it so the fireball will spawn in different places
+            Quaternion randomizedRotation = Quaternion.Euler(fireballHolder.rotation.x, fireballHolder.rotation.y, Random.Range(0, 360));
+            Instantiate(fireballToSpawn, fireballHolder.position, randomizedRotation, fireballHolder).gameObject.SetActive(true);
         }
     }
 }
