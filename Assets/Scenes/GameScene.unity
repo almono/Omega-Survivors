@@ -220,7 +220,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentExperience: 0
+  levelExpIncreaseModifier: 1.1
   experiencePickup: {fileID: 6937924416746058577, guid: a15555ab822bad145b55ff2cfdc4ae75, type: 3}
+  experienceLevels:
+  - 0
+  - 10
+  currentLevel: 1
+  levelCount: 100
 --- !u!4 &321648797
 Transform:
   m_ObjectHideFlags: 0
