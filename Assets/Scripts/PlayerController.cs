@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] float moveSpeed = 4f;
-
+    public float moveSpeed = 4f, pickupRange = 1.5f;
+    
     Animator playerAnim;
 
     // Start is called before the first frame update

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    public float moveSpeed = 1f, damageValue = 10f, hitWaitTime = 0.5f, health = 5f, knockbackTime = 0.05f;
+    public float moveSpeed = 1f, damageValue = 10f, hitWaitTime = 0.5f, health = 5f, knockbackTime = 0.05f, expValue = 1f;
     private Rigidbody2D body;
     private Transform target;
     public SpriteRenderer enemySprite;
@@ -93,6 +93,7 @@ public class EnemyController : MonoBehaviour
 
         if(health <= 0)
         {
+            ExperienceController.instance.SpawnExperiencePickup(transform.position, expValue);
             Destroy(gameObject);
         }
 
