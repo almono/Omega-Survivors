@@ -34,8 +34,6 @@ public class ExperienceController : MonoBehaviour
                 levelExpIncreaseModifier += (levelExpIncreaseModifier * 0.001f);
             }
 
-            Debug.Log(levelExpIncreaseModifier);
-
             experienceLevels.Add(Mathf.Ceil(experienceLevels[experienceLevels.Count - 1] * levelExpIncreaseModifier));
         }
     }
@@ -48,6 +46,8 @@ public class ExperienceController : MonoBehaviour
         {
             LevelUp();
         }
+
+        UIController.instance.UpdateExperience(currentExperience, experienceLevels[currentLevel], currentLevel);
     }
 
     public void SpawnExperiencePickup(Vector3 position, float expValue)
