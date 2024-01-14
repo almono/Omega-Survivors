@@ -310,31 +310,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stats:
   - speed: 1
-    damage: 10
+    damage: 5
     range: 1
     attackCooldown: 8
     amount: 1
     duration: 7
-    upgradeText: Double damage
+    upgradeText: Damage +2
   - speed: 1
-    damage: 10
-    range: 2
+    damage: 7
+    range: 1
     attackCooldown: 8
     amount: 1
     duration: 7
-    upgradeText: Double Range
+    upgradeText: Extra projectile
+  - speed: 1
+    damage: 7
+    range: 1
+    attackCooldown: 8
+    amount: 2
+    duration: 7
+    upgradeText: Damage + Range
   - speed: 3
     damage: 10
-    range: 2
+    range: 1.2
     attackCooldown: 8
-    amount: 1
-    duration: 7
-    upgradeText: 3x Speed
-  - speed: 3
-    damage: 15
-    range: 2
-    attackCooldown: 8
-    amount: 1
+    amount: 2
     duration: 7
     upgradeText: Full Upgrade
   weaponLevel: 0
@@ -398,8 +398,8 @@ MonoBehaviour:
   checkPerFrame: 10
   enemyWaves:
   - enemyToSpawn: {fileID: 3686941632962547824, guid: a070c8c112f53d14fa2a81725f220a68, type: 3}
-    waveLength: 5
-    timeBetweenSpawns: 1
+    waveLength: 15
+    timeBetweenSpawns: 0.1
   - enemyToSpawn: {fileID: 5340509312562652562, guid: d622f22a74d02ee46828ddb9154b036a, type: 3}
     waveLength: 5
     timeBetweenSpawns: 0.2
@@ -20359,31 +20359,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stats:
   - speed: 1
-    damage: 10
+    damage: 5
     range: 1
     attackCooldown: 8
     amount: 1
     duration: 7
-    upgradeText: Double damage
+    upgradeText: Damage +2
   - speed: 1
-    damage: 10
-    range: 2
+    damage: 7
+    range: 1
     attackCooldown: 8
     amount: 1
     duration: 7
-    upgradeText: Double Range
+    upgradeText: Extra projectile
+  - speed: 1
+    damage: 7
+    range: 1
+    attackCooldown: 8
+    amount: 2
+    duration: 7
+    upgradeText: Damage + Range
   - speed: 3
     damage: 10
-    range: 2
+    range: 1.2
     attackCooldown: 8
-    amount: 1
-    duration: 7
-    upgradeText: 3x Speed
-  - speed: 3
-    damage: 15
-    range: 2
-    attackCooldown: 8
-    amount: 1
+    amount: 2
     duration: 7
     upgradeText: Full Upgrade
   weaponLevel: 0
@@ -30186,31 +30186,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stats:
   - speed: 1
-    damage: 10
+    damage: 5
     range: 1
     attackCooldown: 8
     amount: 1
     duration: 7
-    upgradeText: Double damage
+    upgradeText: Damage +2
   - speed: 1
-    damage: 10
-    range: 2
+    damage: 7
+    range: 1
     attackCooldown: 8
     amount: 1
     duration: 7
-    upgradeText: Double Range
+    upgradeText: Extra projectile
+  - speed: 1
+    damage: 7
+    range: 1
+    attackCooldown: 8
+    amount: 2
+    duration: 7
+    upgradeText: Damage + Range
   - speed: 3
     damage: 10
-    range: 2
+    range: 1.2
     attackCooldown: 8
-    amount: 1
-    duration: 7
-    upgradeText: 3x Speed
-  - speed: 3
-    damage: 15
-    range: 2
-    attackCooldown: 8
-    amount: 1
+    amount: 2
     duration: 7
     upgradeText: Full Upgrade
   weaponLevel: 0
@@ -30518,31 +30518,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stats:
   - speed: 1
-    damage: 10
+    damage: 5
     range: 1
     attackCooldown: 8
     amount: 1
     duration: 7
-    upgradeText: Double damage
+    upgradeText: Damage +2
   - speed: 1
-    damage: 10
-    range: 2
+    damage: 7
+    range: 1
     attackCooldown: 8
     amount: 1
     duration: 7
-    upgradeText: Double Range
+    upgradeText: Extra projectile
+  - speed: 1
+    damage: 7
+    range: 1
+    attackCooldown: 8
+    amount: 2
+    duration: 7
+    upgradeText: Damage + Range
   - speed: 3
     damage: 10
-    range: 2
+    range: 1.2
     attackCooldown: 8
-    amount: 1
-    duration: 7
-    upgradeText: 3x Speed
-  - speed: 3
-    damage: 15
-    range: 2
-    attackCooldown: 8
-    amount: 1
+    amount: 2
     duration: 7
     upgradeText: Full Upgrade
   weaponLevel: 0
@@ -30570,7 +30570,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2128220483
 RectTransform:
   m_ObjectHideFlags: 0
@@ -35845,31 +35845,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stats:
   - speed: 1
-    damage: 10
+    damage: 5
     range: 1
     attackCooldown: 8
     amount: 1
     duration: 7
-    upgradeText: Double damage
+    upgradeText: Damage +2
   - speed: 1
-    damage: 10
-    range: 2
+    damage: 7
+    range: 1
     attackCooldown: 8
     amount: 1
     duration: 7
-    upgradeText: Double Range
+    upgradeText: Extra projectile
+  - speed: 1
+    damage: 7
+    range: 1
+    attackCooldown: 8
+    amount: 2
+    duration: 7
+    upgradeText: Damage + Range
   - speed: 3
     damage: 10
-    range: 2
+    range: 1.2
     attackCooldown: 8
-    amount: 1
-    duration: 7
-    upgradeText: 3x Speed
-  - speed: 3
-    damage: 15
-    range: 2
-    attackCooldown: 8
-    amount: 1
+    amount: 2
     duration: 7
     upgradeText: Full Upgrade
   weaponLevel: 0

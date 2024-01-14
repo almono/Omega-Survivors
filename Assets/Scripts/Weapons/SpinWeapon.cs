@@ -29,9 +29,15 @@ public class SpinWeapon : BaseWeapon
         {
             cooldownCounter = cooldownTime;
             
-            // randomize the Z rotation to make it so the fireball will spawn in different places
-            Quaternion randomizedRotation = Quaternion.Euler(fireballHolder.rotation.x, fireballHolder.rotation.y, Random.Range(0, 360));
-            Instantiate(fireballToSpawn, fireballHolder.position, randomizedRotation, fireballHolder).gameObject.SetActive(true);
+            // randomize the Z rotation to make it so the fireball will spawn in different places, works only with one fireball currently
+            //Quaternion randomizedRotation = Quaternion.Euler(fireballHolder.rotation.x, fireballHolder.rotation.y, Random.Range(0, 360));
+            //Instantiate(fireballToSpawn, fireballHolder.position, randomizedRotation, fireballHolder).gameObject.SetActive(true);
+
+            for(int i = 0; i < stats[weaponLevel].amount; i++)
+            {
+                float newFireballRotation = (360f / stats[weaponLevel].amount) * i; // make sure fireballs are evenly spaced out
+                Instantiate(fireballToSpawn, fireballHolder.position, Quaternion.Euler(0f, 0f, newFireballRotation), fireballHolder).gameObject.SetActive(true);
+            }
         }
 
         if(statsUpdated)
