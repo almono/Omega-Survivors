@@ -7,6 +7,8 @@ public class BaseWeapon : MonoBehaviour
     public List<WeaponStats> stats;
     public int weaponLevel;
 
+    public Sprite weaponIcon;
+
     [HideInInspector]
     public bool statsUpdated;
 
@@ -24,4 +26,5 @@ public class BaseWeapon : MonoBehaviour
 public class WeaponStats
 {
     public float speed, damage, range, attackCooldown, amount, duration;
+    public string upgradeText;
 }
