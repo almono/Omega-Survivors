@@ -6,6 +6,7 @@ public class ExperienceController : MonoBehaviour
 {
     public static ExperienceController instance;
     public float currentExperience, levelExpIncreaseModifier = 1.1f;
+    public List<BaseWeapon> upgradeOptions;
 
     public Experience experiencePickup;
 
@@ -74,6 +75,54 @@ public class ExperienceController : MonoBehaviour
         UIController.instance.levelUpPanel.SetActive(true);
         Time.timeScale = 0; // stop time during level up screen
 
-        UIController.instance.levelUpButtons[1].UpdateBtnDisplay(PlayerController.instance.activeWeapon);
+        //UIController.instance.levelUpButtons[1].UpdateBtnDisplay(PlayerController.instance.activeWeapon);
+
+        // with every upgrade create new list
+        upgradeOptions.Clear();
+
+        List<BaseWeapon> availableWeapons = new List<BaseWeapon>();
+        availableWeapons.AddRange(PlayerController.instance.assignedWeapons); // add currently used weapons
+
+        if(availableWeapons.Count > 0)
+        {
+            int selected = Random.Range(0, availableWeapons.Count);
+            upgradeOptions.Add(availableWeapons[selected]);
+            availableWeapons.RemoveAt(selected);
+        }
+
+        // for adding new weapon unlock
+        // fully upgraded weapons should be taken into consideration as well as already used weapons
+        if ((PlayerController.instance.assignedWeapons.Count + PlayerController.instance.fullyUpgradedWeapons.Count) < PlayerController.instance.maxWeapons)
+        {
+            availableWeapons.AddRange(PlayerController.instance.unassignedWeapons);
+        }        
+
+        // for available weapon upgrades
+        for(int i = upgradeOptions.Count; i < PlayerController.instance.maxWeapons; i++)
+        {
+            if (availableWeapons.Count > 0)
+            {
+                int selected = Random.Range(0, availableWeapons.Count);
+                upgradeOptions.Add(availableWeapons[selected]);
+                availableWeapons.RemoveAt(selected);
+            }
+        }
+
+        // prepare UI buttons
+        for(int i = 0; i < upgradeOptions.Count; i++)
+        {
+            UIController.instance.levelUpButtons[i].UpdateBtnDisplay(upgradeOptions[i]);
+        }
+
+        for(int i = 0; i < UIController.instance.levelUpButtons.Length; i++)
+        {
+            if(i < upgradeOptions.Count)
+            {
+                UIController.instance.levelUpButtons[i].gameObject.SetActive(true);
+            } else
+            {
+                UIController.instance.levelUpButtons[i].gameObject.SetActive(false);
+            }
+        }
     }
 }

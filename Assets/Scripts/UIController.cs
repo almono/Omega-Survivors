@@ -31,4 +31,10 @@ public class UIController : MonoBehaviour
 
         experienceText.text = "Level: " + currentLevel.ToString();
     }
+
+    public void SkipLevelUp()
+    {
+        levelUpPanel.SetActive(false);
+        Time.timeScale = 1f;
+    }
 }

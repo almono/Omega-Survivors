@@ -13,10 +13,21 @@ public class LevelUpSelectionBtn : MonoBehaviour
 
     public void UpdateBtnDisplay(BaseWeapon weapon)
     {
-        upgradeDesc.text = weapon.stats[weapon.weaponLevel].upgradeText;
-        weaponIcon.sprite = weapon.weaponIcon;
-        nameLevelText.text = weapon.name + " - " + weapon.weaponLevel.ToString();
+        if(weapon.gameObject.activeSelf)
+        {
+            // if weapon is active then it means player already has it
+            // so we upgrade it
+            upgradeDesc.text = weapon.stats[weapon.weaponLevel].upgradeText;
+            nameLevelText.text = weapon.name + " - " + weapon.weaponLevel;
+        } else
+        {
+            // we dont have that weapon yet
+            upgradeDesc.text = "Unlock " + weapon.name;
+            nameLevelText.text = weapon.name;
+            
+        }
 
+        weaponIcon.sprite = weapon.weaponIcon;
         assignedWeapon = weapon;
     }
 
@@ -24,7 +35,15 @@ public class LevelUpSelectionBtn : MonoBehaviour
     {
         if(assignedWeapon != null)
         {
-            assignedWeapon.LevelUp();
+            if(assignedWeapon.gameObject.activeSelf == false)
+            {
+                // we dont have that weapon yet
+                PlayerController.instance.AddWeapon(assignedWeapon);
+            } else
+            {
+                // we have that weapon
+                assignedWeapon.LevelUp();
+            }
 
             // after selecting upgrade hide the panel and resume time flow
             UIController.instance.levelUpPanel.SetActive(false);

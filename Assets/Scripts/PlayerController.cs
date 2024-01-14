@@ -5,9 +5,13 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float moveSpeed = 4f, pickupRange = 1.5f;
+    public int maxWeapons = 3;
     public static PlayerController instance;
-    public BaseWeapon activeWeapon;
-    
+    //public BaseWeapon activeWeapon;
+
+    public List<BaseWeapon> unassignedWeapons, assignedWeapons;
+    public List<BaseWeapon> fullyUpgradedWeapons = new List<BaseWeapon>();
+
     Animator playerAnim;
 
     private void Awake()
@@ -24,6 +28,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         playerAnim = GetComponent<Animator>();
+        AddWeapon(Random.Range(0, unassignedWeapons.Count));
     }
 
     void Update()
@@ -45,5 +50,24 @@ public class PlayerController : MonoBehaviour
         {
             playerAnim.SetBool("isMoving", false);
         }
+    }
+
+    public void AddWeapon(int weaponNumber)
+    {
+        if(weaponNumber < unassignedWeapons.Count)
+        {
+            unassignedWeapons[weaponNumber].gameObject.SetActive(true);
+            assignedWeapons.Add(unassignedWeapons[weaponNumber]);
+            unassignedWeapons.RemoveAt(weaponNumber);
+        }
+    }
+
+    public void AddWeapon(BaseWeapon weaponToAdd)
+    {
+        // in case we are on unlock screen and want to add a new weapon to the player
+        // we use weapon object to show what we are unlocking
+        weaponToAdd.gameObject.SetActive(true);
+        assignedWeapons.Add(weaponToAdd);
+        unassignedWeapons.Remove(weaponToAdd);
     }
 }

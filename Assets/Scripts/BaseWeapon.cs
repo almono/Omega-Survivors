@@ -18,6 +18,15 @@ public class BaseWeapon : MonoBehaviour
         {
             weaponLevel++;
             statsUpdated = true;
+
+            // check if the weapon reached max level
+            // if yes  then add it to max upgrade weapon list
+            // and remove from assigned weapon list so they cant be upgraded/selected anymore
+            if(weaponLevel >= stats.Count - 1)
+            {
+                PlayerController.instance.fullyUpgradedWeapons.Add(this);
+                PlayerController.instance.assignedWeapons.Remove(this);
+            }
         }
     }
 }
