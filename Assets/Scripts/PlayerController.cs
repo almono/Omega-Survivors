@@ -5,16 +5,27 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float moveSpeed = 4f, pickupRange = 1.5f;
+    public static PlayerController instance;
+    public BaseWeapon activeWeapon;
     
     Animator playerAnim;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        playerAnim = GetComponent<Animator>(); 
+        if(instance == null)
+        {
+            instance = this;
+        } else
+        {
+            Destroy(gameObject);
+        }
     }
 
-    // Update is called once per frame
+    void Start()
+    {
+        playerAnim = GetComponent<Animator>();
+    }
+
     void Update()
     {
         Vector3 moveInput = new Vector3(0f, 0f, 0f);

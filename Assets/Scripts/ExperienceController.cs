@@ -68,5 +68,7 @@ public class ExperienceController : MonoBehaviour
         {
             currentLevel = experienceLevels.Count - 1;
         }
+
+        PlayerController.instance.activeWeapon.LevelUp();
     }
 }

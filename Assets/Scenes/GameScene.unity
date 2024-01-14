@@ -7381,6 +7381,17 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &690069564 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6596433288778496269, guid: 1466c6dfb7f543b408ad14ee9ed0b298, type: 3}
+  m_PrefabInstance: {fileID: 2000230984255828427}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04e6e03924140e74d9a0e815b9f4f622, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &698424344
 GameObject:
   m_ObjectHideFlags: 0
@@ -7730,7 +7741,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -3.5864868, y: -43.549194}
+  m_AnchoredPosition: {x: -3.5864258, y: -43.549194}
   m_SizeDelta: {x: -44.1731, y: 41.0985}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1353439590
@@ -8226,9 +8237,45 @@ PrefabInstance:
       propertyPath: destroyParent
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2508005631346186040, guid: 1466c6dfb7f543b408ad14ee9ed0b298, type: 3}
+      propertyPath: activeWeapon
+      value: 
+      objectReference: {fileID: 690069564}
     - target: {fileID: 4535663452304595084, guid: 1466c6dfb7f543b408ad14ee9ed0b298, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6596433288778496269, guid: 1466c6dfb7f543b408ad14ee9ed0b298, type: 3}
+      propertyPath: enemyDamager
+      value: 
+      objectReference: {fileID: 2000230984255828430}
+    - target: {fileID: 6596433288778496269, guid: 1466c6dfb7f543b408ad14ee9ed0b298, type: 3}
+      propertyPath: stats.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6596433288778496269, guid: 1466c6dfb7f543b408ad14ee9ed0b298, type: 3}
+      propertyPath: stats.Array.data[0].range
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6596433288778496269, guid: 1466c6dfb7f543b408ad14ee9ed0b298, type: 3}
+      propertyPath: stats.Array.data[0].speed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6596433288778496269, guid: 1466c6dfb7f543b408ad14ee9ed0b298, type: 3}
+      propertyPath: stats.Array.data[0].amount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6596433288778496269, guid: 1466c6dfb7f543b408ad14ee9ed0b298, type: 3}
+      propertyPath: stats.Array.data[0].damage
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6596433288778496269, guid: 1466c6dfb7f543b408ad14ee9ed0b298, type: 3}
+      propertyPath: stats.Array.data[0].duration
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6596433288778496269, guid: 1466c6dfb7f543b408ad14ee9ed0b298, type: 3}
+      propertyPath: stats.Array.data[0].attackCooldown
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7356402733249701160, guid: 1466c6dfb7f543b408ad14ee9ed0b298, type: 3}
       propertyPath: m_AnchorMax.x
@@ -8322,6 +8369,17 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &2000230984255828430 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 625090644745062500, guid: 1466c6dfb7f543b408ad14ee9ed0b298, type: 3}
+  m_PrefabInstance: {fileID: 2000230984255828427}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dba2a6949e609d4fa6702af7463f5ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
