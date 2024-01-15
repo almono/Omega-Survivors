@@ -17,7 +17,7 @@ public class LevelUpSelectionBtn : MonoBehaviour
         {
             // if weapon is active then it means player already has it
             // so we upgrade it
-            upgradeDesc.text = weapon.stats[weapon.weaponLevel].upgradeText;
+            upgradeDesc.text = weapon.stats[weapon.weaponLevel].nextUpgradeText;
             nameLevelText.text = weapon.name + " - " + weapon.weaponLevel;
         } else
         {

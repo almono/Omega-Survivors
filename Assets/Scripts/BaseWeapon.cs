@@ -35,5 +35,5 @@ public class BaseWeapon : MonoBehaviour
 public class WeaponStats
 {
     public float speed, damage, range, attackCooldown, amount, duration;
-    public string upgradeText;
+    public string nextUpgradeText;
 }
