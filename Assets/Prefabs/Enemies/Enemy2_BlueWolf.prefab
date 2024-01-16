@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 8567963472046578364}
   - component: {fileID: 308152349411273301}
   - component: {fileID: 1250365525862975103}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enemy2_BlueWolf
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -199,6 +199,7 @@ MonoBehaviour:
   hitWaitTime: 0.3
   health: 15
   knockbackTime: 0.05
+  expValue: 1
   enemySprite: {fileID: 0}
   despawnAtFarDistance: 1
 --- !u!114 &1250365525862975103

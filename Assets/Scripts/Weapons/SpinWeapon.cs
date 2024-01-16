@@ -51,13 +51,11 @@ public class SpinWeapon : BaseWeapon
     public void SetStats()
     {
         enemyDamager.damageValue = stats[weaponLevel].damage;
+        enemyDamager.lifetime = stats[weaponLevel].duration;
+        enemyDamager.piercingWeapon = false;
 
         transform.localScale = Vector3.one * stats[weaponLevel].range;
-
         cooldownTime = stats[weaponLevel].attackCooldown;
-
-        enemyDamager.lifetime = stats[weaponLevel].duration;
-
         cooldownCounter = 0;
     }
 }

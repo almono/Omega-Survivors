@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7814325197484432878}
   - component: {fileID: 4769541238925062542}
   - component: {fileID: 7728331727904567977}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enemy6_Chimera
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -115,6 +115,7 @@ MonoBehaviour:
   hitWaitTime: 0.01
   health: 50
   knockbackTime: 0.02
+  expValue: 1
   enemySprite: {fileID: 0}
   despawnAtFarDistance: 1
 --- !u!114 &7728331727904567977

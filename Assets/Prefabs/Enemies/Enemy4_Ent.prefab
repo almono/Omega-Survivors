@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7796546073637969164}
   - component: {fileID: 4045301574517372416}
   - component: {fileID: 2705678971652303152}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enemy4_Ent
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -115,6 +115,7 @@ MonoBehaviour:
   hitWaitTime: 1
   health: 30
   knockbackTime: 0.02
+  expValue: 1
   enemySprite: {fileID: 0}
   despawnAtFarDistance: 1
 --- !u!114 &2705678971652303152

@@ -175,6 +175,9 @@ MonoBehaviour:
   growSpeed: 3
   hasKnockback: 1
   destroyParent: 1
+  changeSizeOverTime: 1
+  piercingWeapon: 0
+  piercingCount: 0
   isDamageOverTime: 0
   damageOverTimeFrequency: 0
 --- !u!58 &21411716
@@ -383,6 +386,7 @@ MonoBehaviour:
     attackCooldown: 8
     amount: 0
     duration: 7
+    piercingCount: 0
     nextUpgradeText: Damage +1
   - speed: 0.5
     damage: 3
@@ -390,6 +394,7 @@ MonoBehaviour:
     attackCooldown: 8
     amount: 0
     duration: 7
+    piercingCount: 0
     nextUpgradeText: Range +10%
   - speed: 0.5
     damage: 3
@@ -397,6 +402,7 @@ MonoBehaviour:
     attackCooldown: 8
     amount: 0
     duration: 7
+    piercingCount: 0
     nextUpgradeText: More frequent attacks
   - speed: 0.4
     damage: 3
@@ -404,6 +410,7 @@ MonoBehaviour:
     attackCooldown: 8
     amount: 0
     duration: 7
+    piercingCount: 0
     nextUpgradeText: Final Upgrade
   weaponLevel: 0
   weaponIcon: {fileID: 21300000, guid: 0c78c8dd7f0745146b5b5c4fad8288e4, type: 3}
@@ -679,6 +686,90 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 78411181}
   m_CullTransparentMesh: 1
+--- !u!1 &116689461
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 116689462}
+  - component: {fileID: 116689463}
+  m_Layer: 0
+  m_Name: Sprite
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &116689462
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 116689461}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: -0.38268343, w: 0.92387956}
+  m_LocalPosition: {x: 0.651, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 379771294}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -45}
+--- !u!212 &116689463
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 116689461}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 1029751137
+  m_SortingLayer: 5
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 906671935, guid: 99f10abcf979e904b883da0c6922d74f, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &163942252
 GameObject:
   m_ObjectHideFlags: 0
@@ -964,6 +1055,101 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 187516820}
   m_CullTransparentMesh: 1
+--- !u!1 &218888224
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 218888226}
+  - component: {fileID: 218888225}
+  m_Layer: 0
+  m_Name: DaggerThrow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &218888225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 218888224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e81c18435c40b3d4285faa731217ea8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats:
+  - speed: 7
+    damage: 5
+    range: 1
+    attackCooldown: 1.5
+    amount: 1
+    duration: 0.5
+    piercingCount: 0
+    nextUpgradeText: Damage +2
+  - speed: 7
+    damage: 7
+    range: 1
+    attackCooldown: 1.5
+    amount: 2
+    duration: 0.5
+    piercingCount: 0
+    nextUpgradeText: Shot Wait Time Reduced
+  - speed: 7
+    damage: 7
+    range: 1.25
+    attackCooldown: 1.5
+    amount: 3
+    duration: 0.5
+    piercingCount: 0
+    nextUpgradeText: Damage +3
+  - speed: 7
+    damage: 10
+    range: 1.5
+    attackCooldown: 1
+    amount: 4
+    duration: 0.5
+    piercingCount: 0
+    nextUpgradeText: Bigger Daggers
+  - speed: 7
+    damage: 15
+    range: 2.5
+    attackCooldown: 0.75
+    amount: 5
+    duration: 0.5
+    piercingCount: 0
+    nextUpgradeText: Damage +2
+  weaponLevel: 0
+  weaponIcon: {fileID: -1283994490, guid: 99f10abcf979e904b883da0c6922d74f, type: 3}
+  statsUpdated: 0
+  enemyDamager: {fileID: 307449882}
+  projectile: {fileID: 307449885}
+  weaponRange: 5
+  whatIsEnemy:
+    serializedVersion: 2
+    m_Bits: 64
+--- !u!4 &218888226
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 218888224}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 307449884}
+  m_Father: {fileID: 1559623028625586679}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &292111695
 GameObject:
   m_ObjectHideFlags: 0
@@ -1000,6 +1186,121 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -4, y: -4}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &307449881
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 307449884}
+  - component: {fileID: 307449883}
+  - component: {fileID: 307449882}
+  - component: {fileID: 307449885}
+  m_Layer: 0
+  m_Name: DaggerProjectile
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &307449882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 307449881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dba2a6949e609d4fa6702af7463f5ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageValue: 10
+  lifetime: 3
+  growSpeed: 3
+  hasKnockback: 1
+  destroyParent: 0
+  changeSizeOverTime: 0
+  piercingWeapon: 0
+  piercingCount: 0
+  isDamageOverTime: 0
+  damageOverTimeFrequency: 0
+--- !u!61 &307449883
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 307449881}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.022668183, y: 0.11585978}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.26957953, y: 0.6776076}
+  m_EdgeRadius: 0
+--- !u!4 &307449884
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 307449881}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1914695973}
+  m_Father: {fileID: 218888226}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &307449885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 307449881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57166c79d8954ca428df088d543b546a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 4
 --- !u!1 &310667419
 GameObject:
   m_ObjectHideFlags: 0
@@ -1262,6 +1563,107 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 337909346}
   m_CullTransparentMesh: 1
+--- !u!1 &379771293
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 379771294}
+  - component: {fileID: 379771296}
+  - component: {fileID: 379771295}
+  m_Layer: 0
+  m_Name: Sword
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &379771294
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 379771293}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 116689462}
+  m_Father: {fileID: 516734682}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &379771295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 379771293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dba2a6949e609d4fa6702af7463f5ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageValue: 10
+  lifetime: 3
+  growSpeed: 10
+  hasKnockback: 1
+  destroyParent: 0
+  changeSizeOverTime: 1
+  piercingWeapon: 0
+  piercingCount: 0
+  isDamageOverTime: 0
+  damageOverTimeFrequency: 0
+--- !u!61 &379771296
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 379771293}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.43571335, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.4901775, y: 0.2696619}
+  m_EdgeRadius: 0
 --- !u!1 &437204816
 GameObject:
   m_ObjectHideFlags: 0
@@ -1520,6 +1922,96 @@ MonoBehaviour:
   - {fileID: 1058305428}
   - {fileID: 163942254}
   levelUpPanel: {fileID: 2128220482}
+--- !u!1 &516734681
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 516734682}
+  - component: {fileID: 516734683}
+  m_Layer: 0
+  m_Name: GiantSword
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &516734682
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 516734681}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 379771294}
+  m_Father: {fileID: 1559623028625586679}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &516734683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 516734681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5c3e3522e34f2b43ad68c8b502d7286, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats:
+  - speed: 0
+    damage: 10
+    range: 1
+    attackCooldown: 2
+    amount: 1
+    duration: 0.5
+    piercingCount: 0
+    nextUpgradeText: Damage +5
+  - speed: 0
+    damage: 15
+    range: 1
+    attackCooldown: 2
+    amount: 2
+    duration: 0.5
+    piercingCount: 0
+    nextUpgradeText: Bigger & Quicker
+  - speed: 0
+    damage: 15
+    range: 1.5
+    attackCooldown: 1.5
+    amount: 3
+    duration: 0.5
+    piercingCount: 0
+    nextUpgradeText: Longer Sword Time
+  - speed: 0
+    damage: 15
+    range: 1.5
+    attackCooldown: 1.5
+    amount: 4
+    duration: 0.75
+    piercingCount: 0
+    nextUpgradeText: Really Quick
+  - speed: 0
+    damage: 15
+    range: 1.5
+    attackCooldown: 1.5
+    amount: 5
+    duration: 1
+    piercingCount: 0
+    nextUpgradeText: Final
+  weaponLevel: 0
+  weaponIcon: {fileID: 906671935, guid: 99f10abcf979e904b883da0c6922d74f, type: 3}
+  statsUpdated: 0
+  enemyDamager: {fileID: 379771295}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1908,7 +2400,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 0000000067c8a178cdb12748cd70511783b7482715a14f0d
+  m_ApplyToSortingLayers: 0000000067c8a178cdb12748cd70511783b7482715a14f0d677cab6461c1603d
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -14962,6 +15454,90 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1914695972
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1914695973}
+  - component: {fileID: 1914695974}
+  m_Layer: 0
+  m_Name: Sprite
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1914695973
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1914695972}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0.38268343, w: 0.92387956}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 307449884}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 45}
+--- !u!212 &1914695974
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1914695972}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: -1283994490, guid: 99f10abcf979e904b883da0c6922d74f, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &1949420192
 GameObject:
   m_ObjectHideFlags: 0
@@ -15013,6 +15589,9 @@ MonoBehaviour:
   growSpeed: 3
   hasKnockback: 1
   destroyParent: 0
+  changeSizeOverTime: 0
+  piercingWeapon: 0
+  piercingCount: 0
   isDamageOverTime: 1
   damageOverTimeFrequency: 0.25
 --- !u!58 &1949420195
@@ -15088,8 +15667,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1688960103
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 0c78c8dd7f0745146b5b5c4fad8288e4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.33333334}
@@ -15404,6 +15983,7 @@ MonoBehaviour:
     attackCooldown: 8
     amount: 1
     duration: 7
+    piercingCount: 0
     nextUpgradeText: Damage +2
   - speed: 1
     damage: 7
@@ -15411,6 +15991,7 @@ MonoBehaviour:
     attackCooldown: 8
     amount: 1
     duration: 7
+    piercingCount: 0
     nextUpgradeText: Amount +1
   - speed: 1
     damage: 7
@@ -15418,6 +15999,7 @@ MonoBehaviour:
     attackCooldown: 8
     amount: 2
     duration: 7
+    piercingCount: 0
     nextUpgradeText: Damage + Range
   - speed: 3
     damage: 10
@@ -15425,6 +16007,7 @@ MonoBehaviour:
     attackCooldown: 8
     amount: 2
     duration: 7
+    piercingCount: 0
     nextUpgradeText: Final Upgrade
   weaponLevel: 0
   weaponIcon: {fileID: -196789849, guid: 99f10abcf979e904b883da0c6922d74f, type: 3}
@@ -15594,7 +16177,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2023868519
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: -1714587360, guid: 99f10abcf979e904b883da0c6922d74f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -15659,6 +16242,9 @@ MonoBehaviour:
   growSpeed: 3
   hasKnockback: 1
   destroyParent: 1
+  changeSizeOverTime: 1
+  piercingWeapon: 0
+  piercingCount: 0
   isDamageOverTime: 0
   damageOverTimeFrequency: 0
 --- !u!198 &1455263482748004357
@@ -20400,6 +20986,8 @@ Transform:
   - {fileID: 8060359476292840603}
   - {fileID: 2069322250}
   - {fileID: 44710684}
+  - {fileID: 218888226}
+  - {fileID: 516734682}
   m_Father: {fileID: 7937495941623123311}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1815602747051607990
@@ -20455,8 +21043,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1688960103
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -196789849, guid: 99f10abcf979e904b883da0c6922d74f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -20634,9 +21222,10 @@ MonoBehaviour:
   maxWeapons: 3
   unassignedWeapons:
   - {fileID: 4632236285744400582}
-  - {fileID: 2069322251}
   - {fileID: 44710685}
-  assignedWeapons: []
+  - {fileID: 218888225}
+  assignedWeapons:
+  - {fileID: 516734683}
   fullyUpgradedWeapons: []
 --- !u!199 &4631433921290711231
 ParticleSystemRenderer:
@@ -20729,6 +21318,7 @@ MonoBehaviour:
     attackCooldown: 8
     amount: 1
     duration: 7
+    piercingCount: 0
     nextUpgradeText: Damage +2
   - speed: 1
     damage: 7
@@ -20736,6 +21326,7 @@ MonoBehaviour:
     attackCooldown: 8
     amount: 1
     duration: 7
+    piercingCount: 0
     nextUpgradeText: Amount +1
   - speed: 1
     damage: 7
@@ -20743,6 +21334,7 @@ MonoBehaviour:
     attackCooldown: 8
     amount: 2
     duration: 7
+    piercingCount: 0
     nextUpgradeText: Damage + Range
   - speed: 3
     damage: 10
@@ -20750,6 +21342,7 @@ MonoBehaviour:
     attackCooldown: 8
     amount: 2
     duration: 7
+    piercingCount: 0
     nextUpgradeText: Final Upgrade
   weaponLevel: 0
   weaponIcon: {fileID: -196789849, guid: 99f10abcf979e904b883da0c6922d74f, type: 3}

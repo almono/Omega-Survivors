@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7463703163613859461}
   - component: {fileID: 2074763740720956727}
   - component: {fileID: 7668391168360066829}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enemy1_GreenBee
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -115,6 +115,7 @@ MonoBehaviour:
   hitWaitTime: 0.5
   health: 5
   knockbackTime: 0.05
+  expValue: 1
   enemySprite: {fileID: 0}
   despawnAtFarDistance: 1
 --- !u!114 &7668391168360066829

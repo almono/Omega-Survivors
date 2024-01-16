@@ -6,7 +6,8 @@ public class EnemyDamager : MonoBehaviour
 {
     public float damageValue = 10f;
     public float lifetime = 3f, growSpeed = 3f;
-    public bool hasKnockback = true, destroyParent;
+    public bool hasKnockback = true, destroyParent, changeSizeOverTime = false, piercingWeapon = false;
+    public int piercingCount = 0;
     private Vector3 targetSize;
 
     [Header("AOE Attacks")]
@@ -20,13 +21,20 @@ public class EnemyDamager : MonoBehaviour
     {
         //Destroy(transform.parent.gameObject, lifetime);
         targetSize = transform.localScale;
-        transform.localScale = Vector3.zero;
+
+        if(changeSizeOverTime)
+        {
+            transform.localScale = Vector3.zero;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.localScale = Vector3.MoveTowards(transform.localScale, targetSize, growSpeed * Time.deltaTime);
+        if(changeSizeOverTime)
+        {
+            transform.localScale = Vector3.MoveTowards(transform.localScale, targetSize, growSpeed * Time.deltaTime);
+        }        
 
         lifetime -= Time.deltaTime;
 
@@ -85,6 +93,19 @@ public class EnemyDamager : MonoBehaviour
             if (other.gameObject.CompareTag("Enemy"))
             {
                 other.GetComponent<EnemyController>().TakeDamage(damageValue, hasKnockback);
+
+                // check for potential piercing attribute
+                if(piercingWeapon)
+                {
+                    if (piercingCount > 0)
+                    {
+                        piercingCount--;
+                    }
+                    else if (piercingCount <= 0)
+                    {
+                        Destroy(gameObject);
+                    }
+                }
             }
         }
     }

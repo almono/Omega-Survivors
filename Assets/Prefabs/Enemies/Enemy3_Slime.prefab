@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 7870403848563261865}
   - component: {fileID: 5989778266217203411}
   - component: {fileID: 3959134592815825617}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enemy3_Slime
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -199,6 +199,7 @@ MonoBehaviour:
   hitWaitTime: 0.2
   health: 25
   knockbackTime: 0.01
+  expValue: 1
   enemySprite: {fileID: 0}
   despawnAtFarDistance: 1
 --- !u!114 &3959134592815825617
