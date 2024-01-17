@@ -46,6 +46,9 @@ public class EnemyController : MonoBehaviour
         {
             FlipSprite();
             body.velocity = (target.position - transform.position).normalized * moveSpeed;
+        } else
+        {
+            body.velocity = Vector3.zero;
         }
         
         if(hitCounter > 0)
