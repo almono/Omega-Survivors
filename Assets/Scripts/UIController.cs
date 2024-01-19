@@ -8,7 +8,7 @@ public class UIController : MonoBehaviour
 {
     public static UIController instance;
     public Slider experienceSlider;
-    public TMP_Text experienceText;
+    public TMP_Text experienceText, coinText;
 
     public LevelUpSelectionBtn[] levelUpButtons;
     public GameObject levelUpPanel;
@@ -36,5 +36,10 @@ public class UIController : MonoBehaviour
     {
         levelUpPanel.SetActive(false);
         Time.timeScale = 1f;
+    }
+
+    public void UpdateCoins()
+    {
+        coinText.text = "Coins: " + CoinController.instance.currentCoins;
     }
 }

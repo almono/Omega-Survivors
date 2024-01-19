@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    public float moveSpeed = 1f, damageValue = 10f, hitWaitTime = 0.5f, health = 5f, knockbackTime = 0.05f, expValue = 1f;
+    public float moveSpeed = 1f, damageValue = 10f, hitWaitTime = 0.5f, health = 5f, knockbackTime = 0.05f;
     private Rigidbody2D body;
     private Transform target;
     public SpriteRenderer enemySprite;
 
     private float hitCounter, knockbackCounter;
     public bool despawnAtFarDistance = true; // flag to despawn at far distance
+
+    [Header("Drops")]
+    public float expValue = 1f, coinDropRate = 0.5f;
+    public int coinValue = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -96,7 +100,16 @@ public class EnemyController : MonoBehaviour
 
         if(health <= 0)
         {
+            // drop exp
             ExperienceController.instance.SpawnExperiencePickup(transform.position, expValue);
+
+            // check if we should drop a coin
+            // .value returns between 0 and 1
+            if(Random.value <= coinDropRate)
+            {
+                CoinController.instance.DropCoin(transform.position, coinValue);
+            }
+
             Destroy(gameObject);
         }
 
