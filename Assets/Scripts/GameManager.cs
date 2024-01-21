@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     private bool gameIsActive;
-    public float gameTimer;
+    public float gameTimer, waitToShowEndScreen = 1f;
 
     private void Awake()
     {
@@ -32,5 +32,21 @@ public class GameManager : MonoBehaviour
             gameTimer += Time.deltaTime;
             UIController.instance.UpdateTimerText(gameTimer);
         }
+    }
+
+    public void EndLevel()
+    {
+        gameIsActive = false;
+        StartCoroutine(EndLevelCo());
+    }
+
+    IEnumerator EndLevelCo()
+    {
+        yield return new WaitForSeconds(waitToShowEndScreen);
+
+        float minutes = Mathf.FloorToInt(gameTimer / 60f);
+        float seconds = Mathf.FloorToInt(gameTimer % 60);
+        UIController.instance.endTimeText.text = "Time: " + minutes.ToString("00") + " mins " + seconds.ToString("00") + " secs";
+        UIController.instance.levelEndScreen.SetActive(true);
     }
 }
