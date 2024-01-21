@@ -10,6 +10,7 @@ public class UIController : MonoBehaviour
     public static UIController instance;
     public Slider experienceSlider;
     public TMP_Text experienceText, coinText, timerText, endTimeText;
+    public string mainMenuName = "MainMenu";
 
     public LevelUpSelectionBtn[] levelUpButtons;
     public GameObject levelUpPanel, levelEndScreen;
@@ -79,7 +80,7 @@ public class UIController : MonoBehaviour
 
     public void GoToMainMenu()
     {
-
+        SceneManager.LoadScene(mainMenuName);
     }
 
     public void RestartLevel()
