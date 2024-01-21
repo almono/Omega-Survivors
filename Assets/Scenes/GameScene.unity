@@ -731,7 +731,7 @@ MonoBehaviour:
   healthLevelCount: 50
   pickupRangeLevelCount: 50
   moveSpeedLevel: 0
-  healthLeve: 0
+  healthLevel: 0
   pickupRangeLevel: 0
   maxWeaponsLevel: 0
 --- !u!4 &113352282
@@ -1298,7 +1298,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 462575276}
         m_TargetAssemblyTypeName: UIController, Assembly-CSharp
-        m_MethodName: SkipLevelUp
+        m_MethodName: PurchasePickupRange
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2174,7 +2174,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 462575276}
         m_TargetAssemblyTypeName: UIController, Assembly-CSharp
-        m_MethodName: SkipLevelUp
+        m_MethodName: PurchaseMaxWeapons
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2440,13 +2440,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
+  m_fontSize: 26
   m_fontSizeBase: 50
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 26
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -2524,7 +2524,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 881, y: 408.5}
+  m_AnchoredPosition: {x: 918.25, y: 446}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &445761894
@@ -2692,6 +2692,10 @@ MonoBehaviour:
   - {fileID: 1058305428}
   - {fileID: 163942254}
   levelUpPanel: {fileID: 2128220482}
+  moveSpeedUpgradeDisplay: {fileID: 631744199}
+  healthUpgradeDisplay: {fileID: 1221327112}
+  rangeUpgradeDisplay: {fileID: 411076986}
+  maxWeaponsUpgradeDisplay: {fileID: 1266345419}
 --- !u!1 &466227441
 GameObject:
   m_ObjectHideFlags: 0
@@ -3217,13 +3221,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
+  m_fontSize: 26
   m_fontSizeBase: 50
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 26
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -10214,13 +10218,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
+  m_fontSize: 26
   m_fontSizeBase: 50
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 26
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -11270,7 +11274,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 462575276}
         m_TargetAssemblyTypeName: UIController, Assembly-CSharp
-        m_MethodName: SkipLevelUp
+        m_MethodName: PurchaseMoveSpeed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11928,7 +11932,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 462575276}
         m_TargetAssemblyTypeName: UIController, Assembly-CSharp
-        m_MethodName: SkipLevelUp
+        m_MethodName: PurchaseHealth
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13007,7 +13011,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -209.5, y: -136}
+  m_AnchoredPosition: {x: -172.25, y: -98.5}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1433120967
@@ -14616,7 +14620,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2128220483
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14643,7 +14647,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: -25.872314}
-  m_SizeDelta: {x: -79.6072, y: -139.3126}
+  m_SizeDelta: {x: -175.8593, y: -170.26}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2128220484
 MonoBehaviour:

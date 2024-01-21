@@ -25,6 +25,12 @@ public class CoinController : MonoBehaviour
         UIController.instance.UpdateCoins();
     }
 
+    public void SpendCoins(int amount)
+    {
+        currentCoins -= amount;
+        UIController.instance.UpdateCoins();
+    }
+
     public void DropCoin(Vector3 position, int coinValue)
     {
         // make sure coins wont overlap xp drop

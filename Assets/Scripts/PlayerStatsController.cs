@@ -7,7 +7,7 @@ public class PlayerStatsController : MonoBehaviour
     public static PlayerStatsController instance;
     public List<PlayerStatsValue> moveSpeed, health, pickupRange, maxWeapons;
     public int moveSpeedLevelCount, healthLevelCount, pickupRangeLevelCount; // how many levels these stats have in total
-    public int moveSpeedLevel, healthLeve, pickupRangeLevel, maxWeaponsLevel;
+    public int moveSpeedLevel, healthLevel, pickupRangeLevel, maxWeaponsLevel;
 
     private void Awake()
     {
@@ -42,7 +42,91 @@ public class PlayerStatsController : MonoBehaviour
 
     void Update()
     {
-        
+        // if display of upgrades is active then make sure everything is displaying correctly
+        if(UIController.instance.levelUpPanel.activeSelf)
+        {
+            UpdateUpgradesDisplay();
+        }    
+    }
+
+    public void UpdateUpgradesDisplay()
+    {
+        if(moveSpeedLevel < moveSpeed.Count - 1)
+        {
+            UIController.instance.moveSpeedUpgradeDisplay.UpdateDisplay(moveSpeed[moveSpeedLevel + 1].cost, moveSpeed[moveSpeedLevel].value, moveSpeed[moveSpeedLevel + 1].value);
+        } else
+        {
+            UIController.instance.moveSpeedUpgradeDisplay.ShowMaxLevel();
+        }
+
+        if (healthLevel < health.Count - 1)
+        {
+            UIController.instance.healthUpgradeDisplay.UpdateDisplay(health[healthLevel + 1].cost, health[healthLevel].value, health[healthLevel + 1].value);
+        }
+        else
+        {
+            UIController.instance.healthUpgradeDisplay.ShowMaxLevel();
+        }
+
+        if (pickupRangeLevel < pickupRange.Count - 1)
+        {
+            UIController.instance.rangeUpgradeDisplay.UpdateDisplay(pickupRange[pickupRangeLevel + 1].cost, pickupRange[pickupRangeLevel].value, pickupRange[pickupRangeLevel + 1].value);
+        }
+        else
+        {
+            UIController.instance.rangeUpgradeDisplay.ShowMaxLevel();
+        }
+
+        if (maxWeaponsLevel < maxWeapons.Count - 1)
+        {
+            UIController.instance.maxWeaponsUpgradeDisplay.UpdateDisplay(maxWeapons[maxWeaponsLevel + 1].cost, maxWeapons[maxWeaponsLevel].value, maxWeapons[maxWeaponsLevel + 1].value);
+        }
+        else
+        {
+            UIController.instance.maxWeaponsUpgradeDisplay.ShowMaxLevel();
+        }
+    }
+
+    public void PurchaseMoveSpeed()
+    {
+        // increase level -> spend coins
+        moveSpeedLevel++;
+        CoinController.instance.SpendCoins(moveSpeed[moveSpeedLevel].cost);
+        UpdateUpgradesDisplay();
+
+        PlayerController.instance.moveSpeed = moveSpeed[moveSpeedLevel].value;
+    }
+
+    public void PurchaseHealth()
+    {
+        // increase level -> spend coins
+        healthLevel++;
+        CoinController.instance.SpendCoins(health[healthLevel].cost);
+        UpdateUpgradesDisplay();
+
+        // restore health equal to the health increase
+        PlayerHealthController.instance.currentHealth += (health[healthLevel].value - health[healthLevel - 1].value);
+        PlayerHealthController.instance.maxHealth = health[healthLevel].value;
+    }
+
+    public void PurchasePickupRange()
+    {
+        // increase level -> spend coins
+        pickupRangeLevel++;
+        CoinController.instance.SpendCoins(pickupRange[pickupRangeLevel].cost);
+        UpdateUpgradesDisplay();
+
+        PlayerController.instance.pickupRange = pickupRange[pickupRangeLevel].value;
+    }
+
+    public void PurchaseMaxWeapons()
+    {
+        // increase level -> spend coins
+        maxWeaponsLevel++;
+        CoinController.instance.SpendCoins(maxWeapons[maxWeaponsLevel].cost);
+        UpdateUpgradesDisplay();
+
+        PlayerController.instance.maxWeapons = Mathf.RoundToInt(maxWeapons[maxWeaponsLevel].value);
     }
 }
 

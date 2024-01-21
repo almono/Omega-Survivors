@@ -98,7 +98,7 @@ public class ExperienceController : MonoBehaviour
         }        
 
         // for available weapon upgrades
-        for(int i = upgradeOptions.Count; i < PlayerController.instance.maxWeapons; i++)
+        for(int i = upgradeOptions.Count; i < 3; i++)
         {
             if (availableWeapons.Count > 0)
             {
@@ -109,7 +109,7 @@ public class ExperienceController : MonoBehaviour
         }
 
         // prepare UI buttons
-        for(int i = 0; i < upgradeOptions.Count; i++)
+        for (int i = 0; i < upgradeOptions.Count; i++)
         {
             UIController.instance.levelUpButtons[i].UpdateBtnDisplay(upgradeOptions[i]);
         }
@@ -124,5 +124,7 @@ public class ExperienceController : MonoBehaviour
                 UIController.instance.levelUpButtons[i].gameObject.SetActive(false);
             }
         }
+
+        PlayerStatsController.instance.UpdateUpgradesDisplay();
     }
 }
