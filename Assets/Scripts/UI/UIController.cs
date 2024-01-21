@@ -8,7 +8,7 @@ public class UIController : MonoBehaviour
 {
     public static UIController instance;
     public Slider experienceSlider;
-    public TMP_Text experienceText, coinText;
+    public TMP_Text experienceText, coinText, timerText;
 
     public LevelUpSelectionBtn[] levelUpButtons;
     public GameObject levelUpPanel;
@@ -67,5 +67,12 @@ public class UIController : MonoBehaviour
     {
         PlayerStatsController.instance.PurchaseMaxWeapons();
         SkipLevelUp();
+    }
+
+    public void UpdateTimerText(float currentTime)
+    {
+        float minutes = Mathf.FloorToInt(currentTime / 60f);
+        float seconds = Mathf.FloorToInt(currentTime % 60);
+        timerText.text = "Time: " + minutes.ToString("00") + ":" + seconds.ToString("00");
     }
 }
