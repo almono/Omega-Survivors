@@ -13,7 +13,7 @@ public class UIController : MonoBehaviour
     public string mainMenuName = "MainMenu";
 
     public LevelUpSelectionBtn[] levelUpButtons;
-    public GameObject levelUpPanel, levelEndScreen;
+    public GameObject levelUpPanel, levelEndScreen, pauseScreen;
 
     public PlayerStatUpgradeDisplay moveSpeedUpgradeDisplay, healthUpgradeDisplay, rangeUpgradeDisplay, maxWeaponsUpgradeDisplay;
 
@@ -25,6 +25,14 @@ public class UIController : MonoBehaviour
         } else
         {
             Destroy(gameObject);
+        }
+    }
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
+        {
+            PauseUnpauseGame();
         }
     }
 
@@ -80,11 +88,35 @@ public class UIController : MonoBehaviour
 
     public void GoToMainMenu()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(mainMenuName);
     }
 
     public void RestartLevel()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
+    public void PauseUnpauseGame()
+    {
+        if(pauseScreen.activeSelf)
+        {
+            pauseScreen.SetActive(false);
+
+            if (levelUpPanel.activeSelf == false)
+            {
+                Time.timeScale = 1f;
+            }
+        } else
+        {
+            pauseScreen.SetActive(true);
+            Time.timeScale = 0f;
+        }
     }
 }
