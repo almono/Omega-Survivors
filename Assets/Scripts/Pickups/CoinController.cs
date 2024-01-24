@@ -23,6 +23,7 @@ public class CoinController : MonoBehaviour
     {
         currentCoins += amount;
         UIController.instance.UpdateCoins();
+        SFXManager.instance.PlaySFXPitched(2);
     }
 
     public void SpendCoins(int amount)

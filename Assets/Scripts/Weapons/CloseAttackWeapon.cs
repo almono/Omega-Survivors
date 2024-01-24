@@ -49,6 +49,8 @@ public class CloseAttackWeapon : BaseWeapon
                 float swordRotation = (360f / stats[weaponLevel].amount) * i; // make sure fireballs are evenly spaced out
                 Instantiate(enemyDamager, enemyDamager.transform.position, Quaternion.Euler(0f, 0f, enemyDamager.transform.rotation.eulerAngles.z + swordRotation), transform).gameObject.SetActive(true);
             }
+
+            SFXManager.instance.PlaySFXPitched(9);
         }
     }
 

@@ -37,6 +37,7 @@ public class SpinWeapon : BaseWeapon
             {
                 float newFireballRotation = (360f / stats[weaponLevel].amount) * i; // make sure fireballs are evenly spaced out
                 Instantiate(fireballToSpawn, fireballHolder.position, Quaternion.Euler(0f, 0f, newFireballRotation), fireballHolder).gameObject.SetActive(true);
+                SFXManager.instance.PlaySFX(8);
             }
         }
 

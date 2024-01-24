@@ -45,6 +45,7 @@ public class PlayerHealthController : MonoBehaviour
 
         if (currentHealth <= 0) 
         {
+            SFXManager.instance.PlaySFXPitched(3);
             Destroy(gameObject);
             GameManager.instance.EndLevel();
             Instantiate(deathEffect, transform.position, transform.rotation);

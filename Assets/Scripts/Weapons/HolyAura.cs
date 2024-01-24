@@ -27,6 +27,7 @@ public class HolyAura : BaseWeapon
             spawnCounter = spawnTime;
 
             Instantiate(enemyDamager, transform.position, Quaternion.identity, transform).gameObject.SetActive(true);
+            SFXManager.instance.PlaySFXPitched(10);
         }
     }
 
