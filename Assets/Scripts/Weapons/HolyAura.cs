@@ -19,7 +19,7 @@ public class HolyAura : BaseWeapon
             statsUpdated = false;
             SetStats();
         }
-
+        
         spawnCounter -= Time.deltaTime;
 
         if(spawnCounter <= 0f)

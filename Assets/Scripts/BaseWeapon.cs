@@ -37,4 +37,5 @@ public class WeaponStats
     public float speed, damage, range, attackCooldown, amount, duration;
     public int piercingCount;
     public string nextUpgradeText;
+    public bool isPermanent = false; // for weapons like auras, they should be permanent and only get destroyed/spawned when upgraded
 }
