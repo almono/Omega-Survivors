@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
 
     public List<BaseWeapon> unassignedWeapons, assignedWeapons;
     public List<BaseWeapon> fullyUpgradedWeapons = new List<BaseWeapon>();
+    public Vector3 movementDirections = Vector3.zero;
 
     Animator playerAnim;
 
@@ -40,6 +41,7 @@ public class PlayerController : MonoBehaviour
         Vector3 moveInput = new Vector3(0f, 0f, 0f);
         moveInput.x = Input.GetAxisRaw("Horizontal");
         moveInput.y = Input.GetAxisRaw("Vertical");
+        movementDirections = moveInput;
 
         // fix diagonal movement speed
         // so you dont move faster diagonally

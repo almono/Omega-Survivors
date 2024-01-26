@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     public GameObject enemyToSpawn;
-    public Transform minSpawnPoint, maxSpawnPoint;
+    public Transform minSpawnPoint, maxSpawnPoint, enemyHolder;
     public float timeToSpawn = 2f;
 
     private float spawnCounter, despawnDistance;
@@ -65,6 +65,7 @@ public class EnemySpawner : MonoBehaviour
 
                     Vector3 spawnPoint = GetSpawnPointPosition();
                     GameObject newEnemy = Instantiate(enemyWaves[currentWave].enemyToSpawn, spawnPoint, Quaternion.identity);
+                    newEnemy.transform.SetParent(enemyHolder);
                     enemyList.Add(newEnemy);
                 }
             }
