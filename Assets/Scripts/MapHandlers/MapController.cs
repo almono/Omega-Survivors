@@ -4,12 +4,31 @@ using UnityEngine;
 
 public class MapController : MonoBehaviour
 {
+    public static MapController instance;
     public List<GameObject> terrainChunks;
-    public GameObject player;
+    public GameObject player, currentChunk;
+    public Transform chunksParent;
     public float checkerRadius; // how big of a radius before new chunk gets generated
     Vector3 noTerrainPosition;
     public LayerMask terrainMask;
     private PlayerController playerController;
+
+    [Header("Optimization")]
+    public List<GameObject> spawnedChunks;
+    GameObject latestChunk;
+    public float maxOptDistance, optimizerCooldownDuration = 1f; // must be greater than length and width of tilemap
+    float opDistance, optimizerCooldown; // distance between chunk and player
+
+    private void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+        } else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     void Start()
     {
@@ -25,20 +44,65 @@ public class MapController : MonoBehaviour
         if(player != null)
         {
             ChunkChecker();
+            ChunkOptimizer();
         }
     }
 
     void ChunkChecker()
     {
-        // player is moving right
+        if(!currentChunk)
+        {
+            return;
+        }
+
+        // player is moving right, generate chunk on the right
         if(playerController.movementDirections.x > 0 && playerController.movementDirections.y == 0)
         {
-            // if NO chunk exists in that direction
-            if(!Physics2D.OverlapCircle(player.transform.position + new Vector3(36f, 0f, 0f), checkerRadius, terrainMask))
-            {
-                noTerrainPosition = player.transform.position + new Vector3(36f, 0f, 0f);
-                SpawnChunk();
-            }
+            CheckChunkConditions("Right");
+        } else if(playerController.movementDirections.x < 0 && playerController.movementDirections.y == 0)
+        {
+            // left
+            CheckChunkConditions("Left");
+        }
+        else if (playerController.movementDirections.x == 0 && playerController.movementDirections.y > 0)
+        {
+            // up
+            CheckChunkConditions("Up");
+        }
+        else if (playerController.movementDirections.x == 0 && playerController.movementDirections.y < 0)
+        {
+            // down
+            CheckChunkConditions("Down");
+        }
+        else if (playerController.movementDirections.x > 0 && playerController.movementDirections.y > 0)
+        {
+            // right up
+            CheckChunkConditions("RightUp");
+        }
+        else if (playerController.movementDirections.x > 0 && playerController.movementDirections.y < 0)
+        {
+            // right down
+            CheckChunkConditions("RightDown");
+        }
+        else if (playerController.movementDirections.x < 0 && playerController.movementDirections.y > 0)
+        {
+            // left up
+            CheckChunkConditions("LeftUp");
+        }
+        else if (playerController.movementDirections.x < 0 && playerController.movementDirections.y < 0)
+        {
+            // left down
+            CheckChunkConditions("LeftDown");
+        }
+    }
+
+    void CheckChunkConditions(string staticPoint)
+    {
+        // if NO chunk exists in that direction
+        if (!Physics2D.OverlapCircle(currentChunk.transform.Find(staticPoint).position, checkerRadius, terrainMask))
+        {
+            noTerrainPosition = currentChunk.transform.Find(staticPoint).position;
+            SpawnChunk();
         }
     }
 
@@ -46,5 +110,35 @@ public class MapController : MonoBehaviour
     {
         int randomChunk = Random.Range(0, terrainChunks.Count);
         GameObject newChunk = Instantiate(terrainChunks[randomChunk], noTerrainPosition, Quaternion.identity);
+        newChunk.transform.SetParent(chunksParent);
+
+        spawnedChunks.Add(newChunk);
+    }
+
+    void ChunkOptimizer()
+    {
+        optimizerCooldown -= Time.deltaTime;
+
+        if(optimizerCooldown <= 0)
+        {
+            optimizerCooldown = optimizerCooldownDuration;
+        } else
+        {
+            return;
+        }
+
+        foreach(GameObject chunk in spawnedChunks)
+        {
+            opDistance = Vector3.Distance(player.transform.position, chunk.transform.position);
+
+            if (opDistance > maxOptDistance)
+            {
+                // disable chunk if its too far from player for optimization
+                chunk.SetActive(false);
+            } else
+            {
+                chunk.SetActive(true);
+            }
+        }
     }
 }

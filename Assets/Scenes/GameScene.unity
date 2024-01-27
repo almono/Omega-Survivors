@@ -1525,6 +1525,11 @@ Transform:
   - {fileID: 307449884}
   m_Father: {fileID: 1559623028625586679}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &231608387 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2392207625044823099, guid: 4e4e1c18f0ad89f41b2893c60b4c8aea, type: 3}
+  m_PrefabInstance: {fileID: 1905384795153713073}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &263938697
 GameObject:
   m_ObjectHideFlags: 0
@@ -2030,6 +2035,7 @@ Transform:
   - {fileID: 1793181932}
   - {fileID: 113352282}
   - {fileID: 1200377523}
+  - {fileID: 535160495}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &335206377
@@ -3984,6 +3990,37 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &535160494
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 535160495}
+  m_Layer: 0
+  m_Name: MapChunks
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &535160495
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 535160494}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.0087569, y: 3.7808418, z: -0.7556359}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 324437715}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &551280972
 GameObject:
   m_ObjectHideFlags: 0
@@ -7798,10 +7835,16 @@ MonoBehaviour:
   - {fileID: 2392207625044823099, guid: 2a7117e05c8a2ff4888c854c9165c1d1, type: 3}
   - {fileID: 2392207625044823099, guid: 0ab490b208e765948beaf26972a19457, type: 3}
   player: {fileID: 2680722166472386887}
+  currentChunk: {fileID: 0}
+  chunksParent: {fileID: 535160495}
   checkerRadius: 0.2
   terrainMask:
     serializedVersion: 2
     m_Bits: 128
+  spawnedChunks:
+  - {fileID: 231608387}
+  maxOptDistance: 80
+  optimizerCooldownDuration: 1
 --- !u!1 &1210582853
 GameObject:
   m_ObjectHideFlags: 0
