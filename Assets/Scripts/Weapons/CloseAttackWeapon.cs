@@ -39,9 +39,9 @@ public class CloseAttackWeapon : BaseWeapon
                     // rotate by 180 degrees
                     enemyDamager.transform.rotation = Quaternion.Euler(0f, 0f, 180f);
                 }
-            }
 
-            Instantiate(enemyDamager, enemyDamager.transform.position, enemyDamager.transform.rotation, transform).gameObject.SetActive(true);
+                Instantiate(enemyDamager, enemyDamager.transform.position, enemyDamager.transform.rotation, transform).gameObject.SetActive(true);
+            }            
 
             // we already instantiated the main sword
             for (int i = 1; i < stats[weaponLevel].amount; i++)

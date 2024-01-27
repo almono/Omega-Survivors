@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class MapController : MonoBehaviour
 {
+    [Header("Destructible Items")]
+    public List<GameObject> destructibleItems;
+
+    [Header("Chunk configs")]
     public static MapController instance;
     public List<GameObject> terrainChunks;
     public GameObject player, currentChunk;
@@ -140,5 +144,11 @@ public class MapController : MonoBehaviour
                 chunk.SetActive(true);
             }
         }
+    }
+
+    public void SpawnDestructibleItem(Vector3 spawnPosition)
+    {
+        int randomObject = Random.Range(0, destructibleItems.Count);
+        GameObject newProp = Instantiate(destructibleItems[randomObject], spawnPosition, Quaternion.identity);
     }
 }

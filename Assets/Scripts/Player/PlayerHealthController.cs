@@ -32,12 +32,6 @@ public class PlayerHealthController : MonoBehaviour
         healthSlider.value = currentHealth;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
@@ -50,5 +44,17 @@ public class PlayerHealthController : MonoBehaviour
             GameManager.instance.EndLevel();
             Instantiate(deathEffect, transform.position, transform.rotation);
         }
+    }
+
+    public void Heal(float healthAmount)
+    {
+        currentHealth += healthAmount;
+
+        if(currentHealth > maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+
+        healthSlider.value = currentHealth;
     }
 }

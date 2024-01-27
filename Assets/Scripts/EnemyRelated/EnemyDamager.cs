@@ -15,6 +15,7 @@ public class EnemyDamager : MonoBehaviour
     public float damageOverTimeFrequency;
     private float damageOverTimeCounter;
     private List<EnemyController> enemiesInRange = new List<EnemyController>();
+    private List<DestructibleItem> destructibleInRange = new List<DestructibleItem>();
 
     // Start is called before the first frame update
     void Start()
@@ -76,6 +77,19 @@ public class EnemyDamager : MonoBehaviour
                         i--;
                     }
                 }
+
+                for (int i = 0; i < destructibleInRange.Count; i++)
+                {
+                    if (destructibleInRange[i] != null)
+                    {
+                        destructibleInRange[i].TakeHit();
+                    }
+                    else
+                    {
+                        destructibleInRange.RemoveAt(i);
+                        i--;
+                    }
+                }
             }
         }
     }
@@ -87,6 +101,9 @@ public class EnemyDamager : MonoBehaviour
             if (other.gameObject.CompareTag("Enemy"))
             {
                 enemiesInRange.Add(other.GetComponent<EnemyController>());
+            } else if(other.gameObject.CompareTag("DestructibleItem"))
+            {
+                destructibleInRange.Add(other.GetComponent<DestructibleItem>());
             }
         } else
         {
@@ -103,6 +120,22 @@ public class EnemyDamager : MonoBehaviour
                     }
                     else if (piercingCount <= 0)
                     {
+                        Destroy(gameObject);
+                    }
+                }
+            } else if(other.gameObject.CompareTag("DestructibleItem"))
+            {
+                other.GetComponent<DestructibleItem>().TakeHit();
+
+                if (piercingWeapon)
+                {
+                    if (piercingCount > 0)
+                    {
+                        piercingCount--;
+                    }
+                    else if (piercingCount <= 0)
+                    {
+                        Debug.Log("TEST");
                         Destroy(gameObject);
                     }
                 }
