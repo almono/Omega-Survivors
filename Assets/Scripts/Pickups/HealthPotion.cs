@@ -5,6 +5,7 @@ using UnityEngine;
 public class HealthPotion : PickupItem
 {
     public float healAmount = 25f;
+    public float commonDropChance = 0.2f, rareDropChance = 0.4f, legendaryDropChance = 0.8f;
 
     protected override void TriggerItemEffect()
     {
@@ -14,6 +15,16 @@ public class HealthPotion : PickupItem
 
     public override float GetDropChance()
     {
-        return base.GetDropChance();
+        switch(droppableRarity)
+        {
+            case "Common":
+                return commonDropChance;
+            case "Rare":
+                return rareDropChance;
+            case "Legendary":
+                return legendaryDropChance;
+            default:
+                return 0f;
+        }
     }
 }

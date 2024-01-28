@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PickupItem : MonoBehaviour
 {
-    public float dropChance = 0.5f;
+    protected string droppableRarity;
 
     // on item pickup
     private void OnTriggerEnter2D(Collider2D other)
@@ -17,11 +17,16 @@ public class PickupItem : MonoBehaviour
 
     public virtual float GetDropChance()
     {
-        return dropChance;
+        return 0f;
     }
 
     protected virtual void TriggerItemEffect()
     {
         return;
+    }
+
+    public void SetRarity(Chest chestRarity)
+    {
+        droppableRarity = chestRarity.rarity.ToString();
     }
 }

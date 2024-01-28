@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2503613719421760777}
   - component: {fileID: 1319670064791774890}
   m_Layer: 8
-  m_Name: CommonChest
+  m_Name: RareChest
   m_TagString: DestructibleItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -850251060, guid: 85607ab1d2d477245a061cecc1c91664, type: 3}
+  m_Sprite: {fileID: -476659253, guid: 85607ab1d2d477245a061cecc1c91664, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -173,9 +173,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 1
   hitsToDestroy: 1
-  maxItemDropCount: 3
+  maxItemDropCount: 4
   shouldDropItems: 1
   dropItems:
   - {fileID: 1982328279552132053, guid: 78e00c7d832006d41ab79f583b9b9403, type: 3}
   coinDrop: {fileID: 7092762371766951232, guid: 1b67cc5c34f035e4da4030e3c9581096, type: 3}
-  rarity: 0
+  spawnChance: 0
+  rarity: 1

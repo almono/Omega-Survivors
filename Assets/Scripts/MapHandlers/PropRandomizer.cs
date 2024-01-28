@@ -6,7 +6,7 @@ public class PropRandomizer : MonoBehaviour
 {
     public List<GameObject> propSpawnPoints;
     public List<GameObject> propPrefabs;
-    public float propSpawnChance = 0.7f, destructibleSpawnChance = 0.05f;
+    public float propSpawnChance = 1f, destructibleSpawnChance = 1f; // 0.05
 
     void Start()
     {
@@ -24,12 +24,13 @@ public class PropRandomizer : MonoBehaviour
         {
             // pick random prop
             int randomProp = Random.Range(0, propPrefabs.Count);
+            float randomVal = Random.Range(0f, 1f);
 
             // by default 30% change to spawn a prop at given point
             // If a prop is to be spawned then we check if thats a normal prop or a destructible object like chest, crate etc.
-            if(Random.Range(0f, 1f) < propSpawnChance)
+            if (randomVal <= propSpawnChance)
             {
-                if(Random.Range(0f, 1f) < destructibleSpawnChance)
+                if(randomVal <= destructibleSpawnChance)
                 {
                     MapController.instance.SpawnDestructibleItem(propPoint.transform.position);
                 } else

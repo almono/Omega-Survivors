@@ -23,7 +23,7 @@ public class ChunkTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if(MapController.instance.currentChunk == targetMap)
+            if(targetMap != null && MapController.instance.currentChunk == targetMap)
             {
                 MapController.instance.currentChunk = null;
             }

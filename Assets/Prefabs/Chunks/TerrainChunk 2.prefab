@@ -13528,7 +13528,8 @@ MonoBehaviour:
   - {fileID: 241953584632155430, guid: 6f54e0fe380853647903ff2c794dcf82, type: 3}
   - {fileID: 7307223859726344024, guid: bd8d52655975ca74dac48a03d54e36c9, type: 3}
   - {fileID: 6914684471750238870, guid: d157da52d415cb840b71e2512829f1e4, type: 3}
-  propSpawnChance: 0.3
+  propSpawnChance: 1
+  destructibleSpawnChance: 0.05
 --- !u!61 &4236709484308621874
 BoxCollider2D:
   m_ObjectHideFlags: 0
