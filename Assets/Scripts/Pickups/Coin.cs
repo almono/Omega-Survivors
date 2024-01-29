@@ -54,4 +54,9 @@ public class Coin : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    public void SetCoinValue(int value)
+    {
+        coinAmount = value;
+    }
 }

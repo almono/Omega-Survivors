@@ -74,10 +74,37 @@ public class Chest : DestructibleItem
         {
             while (droppedItems < maxItemDropCount)
             {
-                Instantiate(coinDrop, new Vector3(chestPosition.x + Random.Range(-0.6f, 0.6f), chestPosition.y + Random.Range(-0.5f, 0.5f)), Quaternion.identity);
+                Coin newCoin = Instantiate(coinDrop, new Vector3(chestPosition.x + Random.Range(-0.6f, 0.6f), chestPosition.y + Random.Range(-0.5f, 0.5f)), Quaternion.identity);
+                SetCoinValueByRarity(newCoin);
                 droppedItems++;
             }
         }
+    }
+
+    public void SetCoinValueByRarity(Coin coin)
+    {
+        int maxCoinValue = 1;
+
+        switch (rarity)
+        {
+            case ChestRarity.Common:
+                maxCoinValue = 3;
+                break;
+            case ChestRarity.Rare:
+                maxCoinValue = 5;
+                break;
+            case ChestRarity.Legendary:
+                maxCoinValue = 10;
+                break;
+            case ChestRarity.Unique:
+                maxCoinValue = 25;
+                break;
+            default:
+                maxCoinValue = 3;
+                break;
+        }
+
+        coin.SetCoinValue(Mathf.RoundToInt(Random.Range(1, maxCoinValue)));
     }
 
     public ChestRarity GetChestRarity()
