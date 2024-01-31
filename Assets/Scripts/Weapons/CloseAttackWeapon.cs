@@ -6,6 +6,7 @@ public class CloseAttackWeapon : BaseWeapon
 {
     public EnemyDamager enemyDamager;
     private float attackCounter, direction; // cooldown
+    [SerializeField] private float lastDirection; // allow player to stand in one place and still attack
 
     private void Start()
     {
@@ -28,8 +29,10 @@ public class CloseAttackWeapon : BaseWeapon
             direction = Input.GetAxisRaw("Horizontal");
 
             // you need to be moving so sword gets direction
-            if (direction != 0)
+            if (direction != 0 || lastDirection != 0)
             {
+                direction = direction == 0 ? lastDirection : direction;
+
                 // pressing right
                 if(direction > 0)
                 {
@@ -40,8 +43,9 @@ public class CloseAttackWeapon : BaseWeapon
                     enemyDamager.transform.rotation = Quaternion.Euler(0f, 0f, 180f);
                 }
 
+                lastDirection = direction;
                 Instantiate(enemyDamager, enemyDamager.transform.position, enemyDamager.transform.rotation, transform).gameObject.SetActive(true);
-            }            
+            }        
 
             // we already instantiated the main sword
             for (int i = 1; i < stats[weaponLevel].amount; i++)

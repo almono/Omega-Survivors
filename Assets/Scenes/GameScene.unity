@@ -379,7 +379,6 @@ MonoBehaviour:
     duration: 7
     piercingCount: 0
     nextUpgradeText: Damage +1
-    isPermanent: 0
   - speed: 0.5
     damage: 3
     range: 1
@@ -388,7 +387,6 @@ MonoBehaviour:
     duration: 7
     piercingCount: 0
     nextUpgradeText: Range +10%
-    isPermanent: 0
   - speed: 0.5
     damage: 3
     range: 1.1
@@ -397,7 +395,6 @@ MonoBehaviour:
     duration: 7
     piercingCount: 0
     nextUpgradeText: More frequent attacks
-    isPermanent: 0
   - speed: 0.4
     damage: 3
     range: 1.1
@@ -406,11 +403,11 @@ MonoBehaviour:
     duration: 7
     piercingCount: 0
     nextUpgradeText: Final Upgrade
-    isPermanent: 0
   weaponLevel: 0
   weaponIcon: {fileID: 21300000, guid: 0c78c8dd7f0745146b5b5c4fad8288e4, type: 3}
   statsUpdated: 0
   enemyDamager: {fileID: 1949420194}
+  currentAura: {fileID: 0}
 --- !u!1 &52634197
 GameObject:
   m_ObjectHideFlags: 0
@@ -1463,7 +1460,6 @@ MonoBehaviour:
     duration: 0.5
     piercingCount: 0
     nextUpgradeText: Damage +2
-    isPermanent: 0
   - speed: 7
     damage: 7
     range: 1
@@ -1472,7 +1468,6 @@ MonoBehaviour:
     duration: 0.5
     piercingCount: 0
     nextUpgradeText: Shot Wait Time Reduced
-    isPermanent: 0
   - speed: 7
     damage: 7
     range: 1.25
@@ -1481,7 +1476,6 @@ MonoBehaviour:
     duration: 0.5
     piercingCount: 0
     nextUpgradeText: Damage +3
-    isPermanent: 0
   - speed: 7
     damage: 10
     range: 1.5
@@ -1490,7 +1484,6 @@ MonoBehaviour:
     duration: 0.5
     piercingCount: 0
     nextUpgradeText: Bigger Daggers
-    isPermanent: 0
   - speed: 7
     damage: 15
     range: 2.5
@@ -1499,7 +1492,6 @@ MonoBehaviour:
     duration: 0.5
     piercingCount: 0
     nextUpgradeText: Damage +2
-    isPermanent: 0
   weaponLevel: 0
   weaponIcon: {fileID: -1283994490, guid: 99f10abcf979e904b883da0c6922d74f, type: 3}
   statsUpdated: 0
@@ -1738,6 +1730,7 @@ MonoBehaviour:
   changeSizeOverTime: 0
   piercingWeapon: 0
   piercingCount: 0
+  isPermanent: 0
   isDamageOverTime: 0
   damageOverTimeFrequency: 0
 --- !u!61 &307449883
@@ -2300,6 +2293,7 @@ MonoBehaviour:
   changeSizeOverTime: 1
   piercingWeapon: 0
   piercingCount: 0
+  isPermanent: 0
   isDamageOverTime: 0
   damageOverTimeFrequency: 0
 --- !u!61 &379771296
@@ -3649,7 +3643,6 @@ MonoBehaviour:
     duration: 0.5
     piercingCount: 0
     nextUpgradeText: Damage +5
-    isPermanent: 0
   - speed: 0
     damage: 15
     range: 1
@@ -3658,7 +3651,6 @@ MonoBehaviour:
     duration: 0.5
     piercingCount: 0
     nextUpgradeText: Bigger & Quicker
-    isPermanent: 0
   - speed: 0
     damage: 15
     range: 1.5
@@ -3667,7 +3659,6 @@ MonoBehaviour:
     duration: 0.5
     piercingCount: 0
     nextUpgradeText: Longer Sword Time
-    isPermanent: 0
   - speed: 0
     damage: 15
     range: 1.5
@@ -3676,7 +3667,6 @@ MonoBehaviour:
     duration: 0.75
     piercingCount: 0
     nextUpgradeText: Really Quick
-    isPermanent: 0
   - speed: 0
     damage: 15
     range: 1.5
@@ -3685,11 +3675,11 @@ MonoBehaviour:
     duration: 1
     piercingCount: 0
     nextUpgradeText: Final
-    isPermanent: 0
   weaponLevel: 0
   weaponIcon: {fileID: 906671935, guid: 99f10abcf979e904b883da0c6922d74f, type: 3}
   statsUpdated: 0
   enemyDamager: {fileID: 379771295}
+  lastDirection: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -10440,6 +10430,7 @@ MonoBehaviour:
   changeSizeOverTime: 0
   piercingWeapon: 0
   piercingCount: 0
+  isPermanent: 0
   isDamageOverTime: 0
   damageOverTimeFrequency: 0
 --- !u!58 &1641400613
@@ -11379,6 +11370,7 @@ MonoBehaviour:
   changeSizeOverTime: 0
   piercingWeapon: 0
   piercingCount: 0
+  isPermanent: 1
   isDamageOverTime: 1
   damageOverTimeFrequency: 0.25
 --- !u!58 &1949420195
@@ -11522,7 +11514,6 @@ MonoBehaviour:
     duration: 1
     piercingCount: 1
     nextUpgradeText: Damage +5 / Piercing +1
-    isPermanent: 0
   - speed: 0
     damage: 10
     range: 1
@@ -11531,7 +11522,6 @@ MonoBehaviour:
     duration: 1
     piercingCount: 2
     nextUpgradeText: Amount +2
-    isPermanent: 0
   - speed: 0
     damage: 10
     range: 1
@@ -11540,7 +11530,6 @@ MonoBehaviour:
     duration: 1
     piercingCount: 2
     nextUpgradeText: Faster Attacks
-    isPermanent: 0
   - speed: 0
     damage: 10
     range: 1
@@ -11549,7 +11538,6 @@ MonoBehaviour:
     duration: 1
     piercingCount: 2
     nextUpgradeText: Longer Lifetime / Size+
-    isPermanent: 0
   - speed: 0
     damage: 10
     range: 2
@@ -11558,7 +11546,6 @@ MonoBehaviour:
     duration: 2
     piercingCount: 2
     nextUpgradeText: OMEGA AXE
-    isPermanent: 0
   - speed: 0
     damage: 15
     range: 3
@@ -11567,7 +11554,6 @@ MonoBehaviour:
     duration: 2
     piercingCount: 3
     nextUpgradeText: Final Upgrade
-    isPermanent: 0
   weaponLevel: 0
   weaponIcon: {fileID: -1061488230, guid: 99f10abcf979e904b883da0c6922d74f, type: 3}
   statsUpdated: 0
@@ -12764,6 +12750,7 @@ MonoBehaviour:
   changeSizeOverTime: 1
   piercingWeapon: 0
   piercingCount: 0
+  isPermanent: 0
   isDamageOverTime: 0
   damageOverTimeFrequency: 0
 --- !u!198 &1455263482748004357
@@ -17907,7 +17894,6 @@ MonoBehaviour:
     duration: 7
     piercingCount: 0
     nextUpgradeText: Damage +2
-    isPermanent: 0
   - speed: 1
     damage: 7
     range: 1
@@ -17916,7 +17902,6 @@ MonoBehaviour:
     duration: 7
     piercingCount: 0
     nextUpgradeText: Amount +1
-    isPermanent: 0
   - speed: 1
     damage: 7
     range: 1
@@ -17925,7 +17910,6 @@ MonoBehaviour:
     duration: 7
     piercingCount: 0
     nextUpgradeText: Damage + Range
-    isPermanent: 0
   - speed: 3
     damage: 10
     range: 1.2
@@ -17934,7 +17918,6 @@ MonoBehaviour:
     duration: 7
     piercingCount: 0
     nextUpgradeText: Final Upgrade
-    isPermanent: 0
   weaponLevel: 0
   weaponIcon: {fileID: -196789849, guid: 99f10abcf979e904b883da0c6922d74f, type: 3}
   statsUpdated: 0

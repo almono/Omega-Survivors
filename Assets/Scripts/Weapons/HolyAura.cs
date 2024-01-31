@@ -1,15 +1,19 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class HolyAura : BaseWeapon
 {
+    // Holy aura is a "permanent" weapon type so once it is spawned it should stay active all the time
+    // Only updating stats should change it
     public EnemyDamager enemyDamager;
-    private float spawnTime, spawnCounter;
+    public EnemyDamager currentAura;
 
     void Start()
     {
         SetStats();
+        SpawnAura();
     }
 
     void Update()
@@ -18,17 +22,23 @@ public class HolyAura : BaseWeapon
         {
             statsUpdated = false;
             SetStats();
+            UpdateAuraStats();
         }
-        
-        spawnCounter -= Time.deltaTime;
+    }
 
-        if(spawnCounter <= 0f)
-        {
-            spawnCounter = spawnTime;
+    private void SpawnAura()
+    {
+        currentAura = Instantiate(enemyDamager, transform.position, Quaternion.identity, transform);
+        currentAura.gameObject.SetActive(true);
 
-            Instantiate(enemyDamager, transform.position, Quaternion.identity, transform).gameObject.SetActive(true);
-            SFXManager.instance.PlaySFXPitched(10);
-        }
+        SFXManager.instance.PlaySFXPitched(10);
+    }
+
+    private void UpdateAuraStats()
+    {
+        currentAura.damageValue = stats[weaponLevel].damage;
+        currentAura.damageOverTimeFrequency = stats[weaponLevel].speed;
+        currentAura.transform.localScale = Vector3.one * stats[weaponLevel].range;
     }
 
     public void SetStats()
@@ -37,7 +47,6 @@ public class HolyAura : BaseWeapon
         enemyDamager.lifetime = stats[weaponLevel].duration;
         enemyDamager.damageOverTimeFrequency = stats[weaponLevel].speed;
         enemyDamager.transform.localScale = Vector3.one * stats[weaponLevel].range;
-        spawnTime = stats[weaponLevel].attackCooldown;
-        spawnCounter = 0f;
+        enemyDamager.isPermanent = true;
     }
 }

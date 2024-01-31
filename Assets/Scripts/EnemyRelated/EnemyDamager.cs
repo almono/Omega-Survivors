@@ -8,6 +8,7 @@ public class EnemyDamager : MonoBehaviour
     public float lifetime = 3f, growSpeed = 3f;
     public bool hasKnockback = true, destroyParent, changeSizeOverTime = false, piercingWeapon = false;
     public int piercingCount = 0;
+    public bool isPermanent = false; // for weapons like auras, they should be permanent and only get destroyed/spawned when upgraded
     private Vector3 targetSize;
 
     [Header("AOE Attacks")]
@@ -37,7 +38,10 @@ public class EnemyDamager : MonoBehaviour
             transform.localScale = Vector3.MoveTowards(transform.localScale, targetSize, growSpeed * Time.deltaTime);
         }        
 
-        lifetime -= Time.deltaTime;
+        if(!isPermanent)
+        {
+            lifetime -= Time.deltaTime;
+        }
 
         if(lifetime <= 0)
         {
