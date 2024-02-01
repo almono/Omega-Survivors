@@ -2341,6 +2341,108 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.3568269, y: 0.2696619}
   m_EdgeRadius: 0
+--- !u!1 &393753196
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 393753197}
+  - component: {fileID: 393753199}
+  - component: {fileID: 393753198}
+  m_Layer: 0
+  m_Name: Sword
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &393753197
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 393753196}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 789214830}
+  m_Father: {fileID: 2125034712}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &393753198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 393753196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dba2a6949e609d4fa6702af7463f5ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageValue: 10
+  lifetime: 3
+  growSpeed: 10
+  hasKnockback: 1
+  destroyParent: 0
+  changeSizeOverTime: 1
+  piercingWeapon: 0
+  piercingCount: 0
+  isPermanent: 0
+  isDamageOverTime: 0
+  damageOverTimeFrequency: 0
+--- !u!61 &393753199
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 393753196}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.0057730675, y: 0.52322173}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.4927181, y: 1.0307117}
+  m_EdgeRadius: 0
 --- !u!1 &403482265
 GameObject:
   m_ObjectHideFlags: 0
@@ -3453,6 +3555,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 466227441}
   m_CullTransparentMesh: 1
+--- !u!1 &499912539
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 499912540}
+  m_Layer: 0
+  m_Name: Holder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &499912540
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 499912539}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1138105146}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &501210594
 GameObject:
   m_ObjectHideFlags: 0
@@ -3679,7 +3812,6 @@ MonoBehaviour:
   weaponIcon: {fileID: 906671935, guid: 99f10abcf979e904b883da0c6922d74f, type: 3}
   statsUpdated: 0
   enemyDamager: {fileID: 379771295}
-  lastDirection: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -5598,6 +5730,90 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 781801384}
   m_CullTransparentMesh: 1
+--- !u!1 &789214829
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 789214830}
+  - component: {fileID: 789214831}
+  m_Layer: 0
+  m_Name: GoldenSword
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &789214830
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 789214829}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: -0, z: 0.3826836, w: -0.92387944}
+  m_LocalPosition: {x: 0, y: 0.525, z: 0}
+  m_LocalScale: {x: 0.7395, y: 0.7116, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 393753197}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 315}
+--- !u!212 &789214831
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 789214829}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 1348479557, guid: c66fd8414ee874c4ab5cf7b729b75702, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 0.16, y: 0.16}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &792499705
 GameObject:
   m_ObjectHideFlags: 0
@@ -7582,6 +7798,92 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1130955449}
   m_CullTransparentMesh: 1
+--- !u!1 &1138105145
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1138105146}
+  - component: {fileID: 1138105147}
+  m_Layer: 0
+  m_Name: GoldenSword
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1138105146
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1138105145}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2125034712}
+  - {fileID: 499912540}
+  m_Father: {fileID: 1559623028625586679}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1138105147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1138105145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11061a2e9cdfa1349b0c7ccbaafe8444, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats:
+  - speed: 20
+    damage: 5
+    range: 1
+    attackCooldown: 2
+    amount: 1
+    duration: 0.5
+    piercingCount: 0
+    nextUpgradeText: Damage +2
+  - speed: 1
+    damage: 7
+    range: 1
+    attackCooldown: 8
+    amount: 1
+    duration: 0.7
+    piercingCount: 0
+    nextUpgradeText: Amount +1
+  - speed: 1
+    damage: 7
+    range: 1
+    attackCooldown: 8
+    amount: 2
+    duration: 0.9
+    piercingCount: 0
+    nextUpgradeText: Damage + Range
+  - speed: 3
+    damage: 10
+    range: 1.2
+    attackCooldown: 8
+    amount: 2
+    duration: 1.5
+    piercingCount: 0
+    nextUpgradeText: Final Upgrade
+  weaponLevel: 0
+  weaponIcon: {fileID: 1348479557, guid: c66fd8414ee874c4ab5cf7b729b75702, type: 3}
+  statsUpdated: 0
+  enemyDamager: {fileID: 393753198}
+  swordHolder: {fileID: 499912540}
+  swordToSpawn: {fileID: 2125034712}
+  rotationSpeed: 1
 --- !u!1 &1147406603
 GameObject:
   m_ObjectHideFlags: 0
@@ -11951,6 +12253,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1319670064791774890, guid: 5363c3c0af8fce5439e9246ab88a54f5, type: 3}
+      propertyPath: dropItems.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1319670064791774890, guid: 5363c3c0af8fce5439e9246ab88a54f5, type: 3}
+      propertyPath: dropItems.Array.data[0].item
+      value: 
+      objectReference: {fileID: 1982328279552132053, guid: 78e00c7d832006d41ab79f583b9b9403, type: 3}
+    - target: {fileID: 1319670064791774890, guid: 5363c3c0af8fce5439e9246ab88a54f5, type: 3}
+      propertyPath: dropItems.Array.data[1].item
+      value: 
+      objectReference: {fileID: 1982328279552132053, guid: 78e00c7d832006d41ab79f583b9b9403, type: 3}
+    - target: {fileID: 1319670064791774890, guid: 5363c3c0af8fce5439e9246ab88a54f5, type: 3}
+      propertyPath: dropItems.Array.data[0].dropChance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1319670064791774890, guid: 5363c3c0af8fce5439e9246ab88a54f5, type: 3}
+      propertyPath: dropItems.Array.data[1].dropChance
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1756297431570038303, guid: 5363c3c0af8fce5439e9246ab88a54f5, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.203114
@@ -12390,6 +12712,38 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2120984658}
   m_CullTransparentMesh: 1
+--- !u!1 &2125034711
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2125034712}
+  m_Layer: 0
+  m_Name: SwordHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &2125034712
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2125034711}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: -0.38268343, w: 0.92387956}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 393753197}
+  m_Father: {fileID: 1138105146}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -45}
 --- !u!1 &2128220482
 GameObject:
   m_ObjectHideFlags: 0
@@ -17493,6 +17847,7 @@ Transform:
   - {fileID: 44710684}
   - {fileID: 218888226}
   - {fileID: 516734682}
+  - {fileID: 1138105146}
   - {fileID: 1971255294}
   m_Father: {fileID: 7937495941623123311}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -17798,6 +18153,7 @@ MonoBehaviour:
   - {fileID: 218888225}
   - {fileID: 516734683}
   - {fileID: 1971255295}
+  - {fileID: 1138105147}
   assignedWeapons: []
   fullyUpgradedWeapons: []
   movementDirections: {x: 0, y: 0, z: 0}
@@ -18041,6 +18397,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1319670064791774890, guid: 234baec1ef73f8642b5a0f8c9410dfa8, type: 3}
+      propertyPath: dropItems.Array.data[0].item
+      value: 
+      objectReference: {fileID: 1982328279552132053, guid: 78e00c7d832006d41ab79f583b9b9403, type: 3}
+    - target: {fileID: 1319670064791774890, guid: 234baec1ef73f8642b5a0f8c9410dfa8, type: 3}
+      propertyPath: dropItems.Array.data[0].dropChance
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1756297431570038303, guid: 234baec1ef73f8642b5a0f8c9410dfa8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.5

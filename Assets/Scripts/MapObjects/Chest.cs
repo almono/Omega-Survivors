@@ -28,9 +28,8 @@ public class Chest : DestructibleItem
     public override void DropItems()
     {
         // Calculate the total drop chance of all items in the loot table
-        foreach (PickupItem lootItem in dropItems)
+        foreach (DropItem lootItem in dropItems)
         {
-            lootItem.SetRarity(this);
             totalDropChance += lootItem.GetDropChance();
         }
 
@@ -45,7 +44,7 @@ public class Chest : DestructibleItem
         float randomValue = Random.Range(0f, totalDropChance);
 
         // Iterate through the loot table to find the dropped item
-        foreach (PickupItem lootItem in dropItems)
+        foreach (DropItem lootItem in dropItems)
         {
             if (droppedItems < maxItemDropCount)
             {
@@ -54,7 +53,7 @@ public class Chest : DestructibleItem
                 if (randomValue < lootItem.GetDropChance())
                 {
                     // Return the dropped item prefab
-                    PickupItem newItemDrop = Instantiate(lootItem, new Vector3(chestPosition.x + Random.Range(-0.3f, 0.3f), chestPosition.y + Random.Range(-0.3f, 0.3f)), Quaternion.identity);
+                    PickupItem newItemDrop = Instantiate(lootItem.item, new Vector3(chestPosition.x + Random.Range(-0.5f, 0.5f), chestPosition.y + Random.Range(-0.5f, 0.5f)), Quaternion.identity);
                     droppedItems++;
                 }
 

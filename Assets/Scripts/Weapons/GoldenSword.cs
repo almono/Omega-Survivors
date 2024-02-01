@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CloseAttackWeapon : BaseWeapon
+public class GoldenSword : BaseWeapon
 {
     public EnemyDamager enemyDamager;
+    public Transform swordHolder, swordToSpawn;
+    public float rotationSpeed = 1f;
     private float attackCounter, direction; // cooldown
     private float lastDirection; // allow player to stand in one place and still attack
 
@@ -21,9 +23,15 @@ public class CloseAttackWeapon : BaseWeapon
             SetStats();
         }
 
+        PerformAttackChecks();
+        RotateWeapon();
+    }
+
+    private void PerformAttackChecks()
+    {
         attackCounter -= Time.deltaTime;
 
-        if(attackCounter <= 0)
+        if (attackCounter <= 0)
         {
             attackCounter = stats[weaponLevel].attackCooldown;
             direction = Input.GetAxisRaw("Horizontal");
@@ -34,27 +42,29 @@ public class CloseAttackWeapon : BaseWeapon
                 direction = direction == 0 ? lastDirection : direction;
 
                 // pressing right
-                if(direction > 0)
+                if (direction > 0)
                 {
-                    enemyDamager.transform.rotation = Quaternion.identity;
-                } else
+                    enemyDamager.transform.localScale = new Vector3(1f, 1f, 1f);
+                }
+                else
                 {
-                    // rotate by 180 degrees
-                    enemyDamager.transform.rotation = Quaternion.Euler(0f, 0f, 180f);
+                    enemyDamager.transform.localScale = new Vector3(-1f, 1f, 1f);
                 }
 
                 lastDirection = direction;
-                Instantiate(enemyDamager, enemyDamager.transform.position, enemyDamager.transform.rotation, transform).gameObject.SetActive(true);
-            }        
-
-            // we already instantiated the main sword
-            for (int i = 1; i < stats[weaponLevel].amount; i++)
-            {
-                float swordRotation = (360f / stats[weaponLevel].amount) * i; // make sure fireballs are evenly spaced out
-                Instantiate(enemyDamager, enemyDamager.transform.position, Quaternion.Euler(0f, 0f, enemyDamager.transform.rotation.eulerAngles.z + swordRotation), transform).gameObject.SetActive(true);
             }
 
+            Debug.Log(enemyDamager.transform.rotation);
+            Instantiate(enemyDamager, enemyDamager.transform.position, enemyDamager.transform.rotation, swordHolder).gameObject.SetActive(true);
             SFXManager.instance.PlaySFXPitched(9);
+        }
+    }
+
+    private void RotateWeapon()
+    {
+        if(swordHolder != null)
+        {
+            swordHolder.rotation = Quaternion.Euler(0f, 0f, swordHolder.rotation.eulerAngles.z + (rotationSpeed * Time.deltaTime * stats[weaponLevel].speed));
         }
     }
 
@@ -65,6 +75,7 @@ public class CloseAttackWeapon : BaseWeapon
         enemyDamager.piercingWeapon = false;
 
         enemyDamager.transform.localScale = Vector3.one * stats[weaponLevel].range;
-        attackCounter = 0f;
+
+        rotationSpeed *= rotationSpeed * stats[weaponLevel].speed;
     }
 }

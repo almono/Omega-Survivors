@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditorInternal.VersionControl;
@@ -9,7 +10,7 @@ public class DestructibleItem : MonoBehaviour
     public int currentHealth = 3;
     public int hitsToDestroy = 3, maxItemDropCount = 1;
     public bool shouldDropItems = false;
-    public List<PickupItem> dropItems;
+    public List<DropItem> dropItems;
 
     protected int droppedItems = 0;
     protected float totalDropChance = 0f;
@@ -52,5 +53,17 @@ public class DestructibleItem : MonoBehaviour
     public string GetName()
     {
         return this.name;
+    }
+}
+
+[System.Serializable]
+public class DropItem
+{
+    public PickupItem item;
+    public float dropChance = 0.1f;
+
+    public float GetDropChance()
+    {
+        return dropChance;
     }
 }
