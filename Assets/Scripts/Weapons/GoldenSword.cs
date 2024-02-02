@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class GoldenSword : BaseWeapon
 {
-    public EnemyDamager enemyDamager;
+    public EnemyDamager enemyDamager, goldenSword;
     public Transform swordHolder, swordToSpawn;
     public float rotationSpeed = 1f;
     private float attackCounter, direction; // cooldown
     private float lastDirection; // allow player to stand in one place and still attack
+    private bool swingingRight = true;
 
     private void Start()
     {
@@ -40,31 +41,36 @@ public class GoldenSword : BaseWeapon
             if (direction != 0 || lastDirection != 0)
             {
                 direction = direction == 0 ? lastDirection : direction;
-
-                // pressing right
-                if (direction > 0)
-                {
-                    enemyDamager.transform.localScale = new Vector3(1f, 1f, 1f);
-                }
-                else
-                {
-                    enemyDamager.transform.localScale = new Vector3(-1f, 1f, 1f);
-                }
-
                 lastDirection = direction;
             }
 
-            Debug.Log(enemyDamager.transform.rotation);
-            Instantiate(enemyDamager, enemyDamager.transform.position, enemyDamager.transform.rotation, swordHolder).gameObject.SetActive(true);
+            // pressing right
+            if (direction > 0)
+            {
+                swingingRight = true;
+            }
+            else
+            {
+                swingingRight = false;
+            }
+
+            goldenSword = Instantiate(enemyDamager, enemyDamager.transform.position, Quaternion.Euler(0f, 0f, (swingingRight ? 40f : 320f)), swordHolder);
+            goldenSword.gameObject.SetActive(true);
             SFXManager.instance.PlaySFXPitched(9);
         }
     }
 
     private void RotateWeapon()
     {
-        if(swordHolder != null)
+        if(swordHolder != null && goldenSword != null)
         {
-            swordHolder.rotation = Quaternion.Euler(0f, 0f, swordHolder.rotation.eulerAngles.z + (rotationSpeed * Time.deltaTime * stats[weaponLevel].speed));
+            if(swingingRight)
+            {
+                goldenSword.transform.rotation = Quaternion.Euler(0f, 0f, (goldenSword.transform.rotation.eulerAngles.z - (rotationSpeed * Time.deltaTime * stats[weaponLevel].speed)));
+            } else
+            {
+                goldenSword.transform.rotation = Quaternion.Euler(0f, 0f, (goldenSword.transform.rotation.eulerAngles.z + (rotationSpeed * Time.deltaTime * stats[weaponLevel].speed)));
+            }
         }
     }
 

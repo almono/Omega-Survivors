@@ -139,7 +139,6 @@ public class EnemyDamager : MonoBehaviour
                     }
                     else if (piercingCount <= 0)
                     {
-                        Debug.Log("TEST");
                         Destroy(gameObject);
                     }
                 }
