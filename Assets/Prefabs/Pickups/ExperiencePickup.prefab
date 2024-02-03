@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 8109668944793050823}
   - component: {fileID: 3750745211494920039}
   - component: {fileID: 6937924416746058577}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ExperiencePickup
-  m_TagString: Untagged
+  m_TagString: XP
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -84,6 +84,10 @@ MonoBehaviour:
   experienceValue: 1
   moveSpeed: 4
   timeBetweenChecks: 0.2
+  whatIsExperience:
+    serializedVersion: 2
+    m_Bits: 512
+  experienceSprite: {fileID: 8496473083943242}
 --- !u!1 &2854227779668143953
 GameObject:
   m_ObjectHideFlags: 0
@@ -155,7 +159,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 223322389
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 1495497679, guid: 99f10abcf979e904b883da0c6922d74f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

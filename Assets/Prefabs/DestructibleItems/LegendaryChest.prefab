@@ -176,6 +176,8 @@ MonoBehaviour:
   maxItemDropCount: 5
   shouldDropItems: 1
   dropItems:
-  - {fileID: 1982328279552132053, guid: 78e00c7d832006d41ab79f583b9b9403, type: 3}
+  - item: {fileID: 1982328279552132053, guid: 78e00c7d832006d41ab79f583b9b9403, type: 3}
+    dropChance: 0.1
   coinDrop: {fileID: 7092762371766951232, guid: 1b67cc5c34f035e4da4030e3c9581096, type: 3}
+  spawnChance: 0
   rarity: 2

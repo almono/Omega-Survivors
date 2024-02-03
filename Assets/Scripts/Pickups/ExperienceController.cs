@@ -11,7 +11,7 @@ public class ExperienceController : MonoBehaviour
     public Experience experiencePickup;
 
     public List<float> experienceLevels;
-    public int currentLevel = 1, levelCount = 100;
+    public int currentLevel = 1, levelCount = 100, levelUpsLeft = 0;
 
     void Awake()
     {
@@ -45,10 +45,9 @@ public class ExperienceController : MonoBehaviour
 
         if(currentExperience >= experienceLevels[currentLevel])
         {
-            LevelUp();
+            CheckForLevelUp();
         }
 
-        UIController.instance.UpdateExperience(currentExperience, experienceLevels[currentLevel], currentLevel);
         SFXManager.instance.PlaySFXPitched(2);
     }
 
@@ -127,5 +126,49 @@ public class ExperienceController : MonoBehaviour
         }
 
         PlayerStatsController.instance.UpdateUpgradesDisplay();
+        UIController.instance.UpdateExperience(currentExperience, experienceLevels[currentLevel], currentLevel);
+    }
+
+    public int CountLeftLevelUps()
+    {
+        levelUpsLeft = 0;
+        int imitiatedLevel = currentLevel;
+        float imitiatedXp = currentExperience;
+
+        while (imitiatedXp >= experienceLevels[imitiatedLevel])
+        {
+            imitiatedXp -= experienceLevels[imitiatedLevel];
+            imitiatedLevel++;
+            levelUpsLeft++;
+        }
+
+        return levelUpsLeft;
+    }
+
+    public void CheckForLevelUp()
+    {
+        int leftLevelUps = 0;
+
+        if (currentExperience >= experienceLevels[currentLevel])
+        {
+            leftLevelUps = CountLeftLevelUps();
+            LevelUp();
+
+            UpdateLevelsLeftText(leftLevelUps);
+
+            if (leftLevelUps > 1)
+            {
+                UIController.instance.levelUpsLeft.SetActive(true);
+            }
+            else
+            {
+                UIController.instance.levelUpsLeft.SetActive(false);
+            }
+        }
+    }
+
+    public void UpdateLevelsLeftText(int levelsLeft)
+    {
+        UIController.instance.levelsLeftText.text = levelsLeft.ToString();
     }
 }

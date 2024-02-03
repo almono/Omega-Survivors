@@ -9,11 +9,11 @@ public class UIController : MonoBehaviour
 {
     public static UIController instance;
     public Slider experienceSlider;
-    public TMP_Text experienceText, coinText, timerText, endTimeText;
+    public TMP_Text experienceText, coinText, timerText, endTimeText, levelsLeftText;
     public string mainMenuName = "MainMenu";
 
     public LevelUpSelectionBtn[] levelUpButtons;
-    public GameObject levelUpPanel, levelEndScreen, pauseScreen;
+    public GameObject levelUpPanel, levelEndScreen, pauseScreen, levelUpsLeft;
 
     public PlayerStatUpgradeDisplay moveSpeedUpgradeDisplay, healthUpgradeDisplay, rangeUpgradeDisplay, maxWeaponsUpgradeDisplay;
 
@@ -48,6 +48,8 @@ public class UIController : MonoBehaviour
     {
         levelUpPanel.SetActive(false);
         Time.timeScale = 1f;
+
+        ExperienceController.instance.CheckForLevelUp();
     }
 
     public void UpdateCoins()

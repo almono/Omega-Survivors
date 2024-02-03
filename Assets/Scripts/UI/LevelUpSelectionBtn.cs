@@ -48,6 +48,8 @@ public class LevelUpSelectionBtn : MonoBehaviour
             // after selecting upgrade hide the panel and resume time flow
             UIController.instance.levelUpPanel.SetActive(false);
             Time.timeScale = 1.0f;
+
+            ExperienceController.instance.CheckForLevelUp();
         }
     }
 }
