@@ -60,7 +60,7 @@ public class DestructibleItem : MonoBehaviour
 public class DropItem
 {
     public PickupItem item;
-    public float dropChance = 0.1f;
+    [Range(0f, 1f)] public float dropChance = 0.1f;
 
     public float GetDropChance()
     {

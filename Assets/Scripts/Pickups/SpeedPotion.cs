@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HealthPotion : PickupItem
+public class SpeedPotion : PickupItem
 {
-    public float healAmount = 25f;
+    public float speedBuffValue = 1.5f, speedBuffDuration = 60f;
 
     protected override void TriggerItemEffect()
     {
-        PlayerHealthController.instance.Heal(healAmount);
+        TempBuffController.instance.ApplySpeedBuff(speedBuffValue, speedBuffDuration);
         Destroy(gameObject); // make sure to remove the potion after picking it up
     }
 }

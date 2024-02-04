@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     public Vector3 movementDirections = Vector3.zero;
 
     Animator playerAnim;
+    
 
     private void Awake()
     {
@@ -47,7 +48,7 @@ public class PlayerController : MonoBehaviour
         // so you dont move faster diagonally
         moveInput.Normalize();
 
-        transform.position += moveInput * moveSpeed * Time.deltaTime;
+        transform.position += moveInput * moveSpeed * TempBuffController.instance.moveSpeedBuffMultiplier * Time.deltaTime;
 
         if(moveInput != Vector3.zero)
         {
