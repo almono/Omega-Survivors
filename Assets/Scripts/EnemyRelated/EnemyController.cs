@@ -114,10 +114,23 @@ public class EnemyController : MonoBehaviour
             Destroy(gameObject);
         } else
         {
+            StartCoroutine(Flash());
             SFXManager.instance.PlaySFXPitched(1);
         }
 
         DamageNumberController.instance.SpawnDamageNumber(damageValue, transform.position);
+    }
+
+    private IEnumerator Flash()
+    {
+        // Change the material color to the flash color
+        enemySprite.material.color = Color.red;
+
+        // Wait for 0.1s before changing color back
+        yield return new WaitForSeconds(0.2f);
+
+        // Change the material color back to the original color
+        enemySprite.material.color = Color.white;
     }
 
     public void TakeDamage(float damageValue, bool applyKnockback)
