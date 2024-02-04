@@ -1974,6 +1974,7 @@ MonoBehaviour:
   levelExpIncreaseModifier: 1.1
   upgradeOptions: []
   experiencePickup: {fileID: 6937924416746058577, guid: a15555ab822bad145b55ff2cfdc4ae75, type: 3}
+  pickupsHolder: {fileID: 939904018}
   experienceLevels:
   - 0
   - 10
@@ -6875,6 +6876,37 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &939904017
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 939904018}
+  m_Layer: 0
+  m_Name: PickupsHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &939904018
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 939904017}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.262394, y: 3.5020933, z: -0.03817177}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &959468792
 GameObject:
   m_ObjectHideFlags: 0
@@ -7848,36 +7880,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats:
-  - speed: 20
+  - speed: 1
     damage: 5
     range: 1
-    attackCooldown: 2
+    attackCooldown: 3
     amount: 1
     duration: 0.5
     piercingCount: 0
-    nextUpgradeText: Damage +2
-  - speed: 1
-    damage: 7
-    range: 1
-    attackCooldown: 8
+    nextUpgradeText: Damage & Arc length
+  - speed: 1.2
+    damage: 10
+    range: 1.5
+    attackCooldown: 3
+    amount: 1
+    duration: 0.5
+    piercingCount: 0
+    nextUpgradeText: Cooldown
+  - speed: 1.2
+    damage: 10
+    range: 1.5
+    attackCooldown: 2.5
+    amount: 1
+    duration: 0.5
+    piercingCount: 0
+    nextUpgradeText: Damage + Size
+  - speed: 1.5
+    damage: 15
+    range: 2.5
+    attackCooldown: 2.5
     amount: 1
     duration: 0.7
-    piercingCount: 0
-    nextUpgradeText: Amount +1
-  - speed: 1
-    damage: 7
-    range: 1
-    attackCooldown: 8
-    amount: 2
-    duration: 0.9
-    piercingCount: 0
-    nextUpgradeText: Damage + Range
-  - speed: 3
-    damage: 10
-    range: 1.2
-    attackCooldown: 8
-    amount: 2
-    duration: 1.5
     piercingCount: 0
     nextUpgradeText: Final Upgrade
   weaponLevel: 0
@@ -7887,7 +7919,7 @@ MonoBehaviour:
   goldenSword: {fileID: 0}
   swordHolder: {fileID: 499912540}
   swordToSpawn: {fileID: 2125034712}
-  rotationSpeed: 1
+  rotationSpeed: 360
 --- !u!1 &1147406603
 GameObject:
   m_ObjectHideFlags: 0
@@ -11003,6 +11035,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coin: {fileID: 7092762371766951232, guid: 1b67cc5c34f035e4da4030e3c9581096, type: 3}
   currentCoins: 0
+  pickupsHolder: {fileID: 939904018}
 --- !u!4 &1793181932
 Transform:
   m_ObjectHideFlags: 0
@@ -19160,6 +19193,7 @@ SceneRoots:
   - {fileID: 175997080}
   - {fileID: 324437715}
   - {fileID: 580963448}
+  - {fileID: 939904018}
   - {fileID: 2025117725}
   - {fileID: 1905384795153713073}
   - {fileID: 6265268973340349597}

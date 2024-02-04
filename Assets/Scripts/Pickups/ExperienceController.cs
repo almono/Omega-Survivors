@@ -9,6 +9,7 @@ public class ExperienceController : MonoBehaviour
     public List<BaseWeapon> upgradeOptions;
 
     public Experience experiencePickup;
+    public Transform pickupsHolder;
 
     public List<float> experienceLevels;
     public int currentLevel = 1, levelCount = 100, levelUpsLeft = 0;
@@ -42,8 +43,9 @@ public class ExperienceController : MonoBehaviour
     public void AddExperienceToPlayer(float experience)
     {
         currentExperience += experience;
+        UIController.instance.UpdateExperience(currentExperience, experienceLevels[currentLevel], currentLevel);
 
-        if(currentExperience >= experienceLevels[currentLevel])
+        if (currentExperience >= experienceLevels[currentLevel])
         {
             CheckForLevelUp();
         }
@@ -53,7 +55,7 @@ public class ExperienceController : MonoBehaviour
 
     public void SpawnExperiencePickup(Vector3 position, float expValue)
     {
-        Experience expPickup = Instantiate(experiencePickup, position, Quaternion.identity);
+        Experience expPickup = Instantiate(experiencePickup, position, Quaternion.identity, pickupsHolder);
         expPickup.SetExpValue(expValue);
     }
 

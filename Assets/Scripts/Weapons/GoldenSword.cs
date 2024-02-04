@@ -6,7 +6,7 @@ public class GoldenSword : BaseWeapon
 {
     public EnemyDamager enemyDamager, goldenSword;
     public Transform swordHolder, swordToSpawn;
-    public float rotationSpeed = 1f;
+    public float rotationSpeed = 360f;
     private float attackCounter, direction; // cooldown
     private float lastDirection; // allow player to stand in one place and still attack
     private bool swingingRight = true;
@@ -31,18 +31,18 @@ public class GoldenSword : BaseWeapon
     private void PerformAttackChecks()
     {
         attackCounter -= Time.deltaTime;
+        direction = Input.GetAxisRaw("Horizontal");
+
+        // you need to be moving so sword gets direction
+        if (direction != 0 || lastDirection != 0)
+        {
+            direction = direction == 0 ? lastDirection : direction;
+            lastDirection = direction;
+        }
 
         if (attackCounter <= 0)
         {
             attackCounter = stats[weaponLevel].attackCooldown;
-            direction = Input.GetAxisRaw("Horizontal");
-
-            // you need to be moving so sword gets direction
-            if (direction != 0 || lastDirection != 0)
-            {
-                direction = direction == 0 ? lastDirection : direction;
-                lastDirection = direction;
-            }
 
             // pressing right
             if (direction > 0)
@@ -54,7 +54,7 @@ public class GoldenSword : BaseWeapon
                 swingingRight = false;
             }
 
-            goldenSword = Instantiate(enemyDamager, enemyDamager.transform.position, Quaternion.Euler(0f, 0f, (swingingRight ? 40f : 320f)), swordHolder);
+            goldenSword = Instantiate(enemyDamager, enemyDamager.transform.position, Quaternion.Euler(0f, 0f, (swingingRight ? 40f : -40f)), swordHolder);
             goldenSword.gameObject.SetActive(true);
             SFXManager.instance.PlaySFXPitched(9);
         }
@@ -82,6 +82,6 @@ public class GoldenSword : BaseWeapon
 
         enemyDamager.transform.localScale = Vector3.one * stats[weaponLevel].range;
 
-        rotationSpeed *= rotationSpeed * stats[weaponLevel].speed;
+        rotationSpeed *= stats[weaponLevel].speed;
     }
 }

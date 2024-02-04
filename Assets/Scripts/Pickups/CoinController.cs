@@ -7,6 +7,7 @@ public class CoinController : MonoBehaviour
     public static CoinController instance;
     public Coin coin;
     public int currentCoins;
+    public Transform pickupsHolder;
 
     private void Awake()
     {
@@ -35,7 +36,7 @@ public class CoinController : MonoBehaviour
     public void DropCoin(Vector3 position, int coinValue)
     {
         // make sure coins wont overlap xp drop
-        Coin newCoin = Instantiate(coin, position + new Vector3(.2f, .1f, 0f), Quaternion.identity);
+        Coin newCoin = Instantiate(coin, position + new Vector3(.2f, .1f, 0f), Quaternion.identity, pickupsHolder);
         newCoin.coinAmount = coinValue;
         newCoin.gameObject.SetActive(true);
     }
