@@ -70,7 +70,8 @@ public class EnemyDamager : MonoBehaviour
                 {
                     if (enemiesInRange[i] != null)
                     {
-                        enemiesInRange[i].TakeDamage(damageValue);
+                        float finalDamage = damageValue * TempBuffController.instance.damageBuffMultiplier;
+                        enemiesInRange[i].TakeDamage(finalDamage);
                     } else
                     {
                         // when we remove element from list
@@ -113,7 +114,8 @@ public class EnemyDamager : MonoBehaviour
         {
             if (other.gameObject.CompareTag("Enemy"))
             {
-                other.GetComponent<EnemyController>().TakeDamage(damageValue, hasKnockback);
+                float finalDamage = damageValue * TempBuffController.instance.damageBuffMultiplier;
+                other.GetComponent<EnemyController>().TakeDamage(finalDamage, hasKnockback);
 
                 // check for potential piercing attribute
                 if(piercingWeapon)
