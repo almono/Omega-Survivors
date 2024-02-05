@@ -11941,12 +11941,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activeBuffs: []
-  speedBuffIcon: {fileID: 51033397}
-  speedBuffText: {fileID: 708005263}
   moveSpeedBuffCounter: 0
   moveSpeedBuffMultiplier: 1
-  damageBuffIcon: {fileID: 308375054}
-  damageBuffText: {fileID: 1579012174}
   damageBuffCounter: 0
   damageBuffMultiplier: 1
 --- !u!1 &1878982536

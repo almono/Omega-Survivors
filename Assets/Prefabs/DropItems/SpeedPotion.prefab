@@ -143,5 +143,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4758b3ce501bb1449eb484c53d64c85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedBuffValue: 1.3
-  speedBuffDuration: 30
+  buffValues: {fileID: 11400000, guid: f360b383f0a7e914ebb41350a4fb051e, type: 2}

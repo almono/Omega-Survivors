@@ -6,17 +6,13 @@ using UnityEngine;
 public class TempBuffController : MonoBehaviour
 {
     public static TempBuffController instance;
-    public List<GameObject> activeBuffs = new List<GameObject>();
+    public List<TempBuffSO> activeBuffs = new List<TempBuffSO>();
 
     [Header("Speed Buff")]
-    public GameObject speedBuffIcon;
-    public TMP_Text speedBuffText;
     public float moveSpeedBuffCounter = 0f;
     public float moveSpeedBuffMultiplier = 1f;
 
     [Header("Damage Buff")]
-    public GameObject damageBuffIcon;
-    public TMP_Text damageBuffText;
     public float damageBuffCounter = 0f;
     public float damageBuffMultiplier = 1f;
 
@@ -34,65 +30,63 @@ public class TempBuffController : MonoBehaviour
 
     private void Start()
     {
-        Transform uiTextTransform = speedBuffIcon.transform.Find("BuffCounter");
-        speedBuffText = uiTextTransform.GetComponent<TextMeshProUGUI>();
+
     }
 
     void Update()
     {
         CheckTempBuffsStatus();
-        //float minutes = Mathf.FloorToInt(currentTime / 60f);
-        //float seconds = Mathf.FloorToInt(currentTime % 60);
     }
 
-    public void ApplySpeedBuff(float speedMultiplier = 1.5f, float speedDuration = 60f)
+    public void ApplyBuff(TempBuffSO booster, GameObject UIIcon, TMP_Text buffCounterText)
     {
-        activeBuffs.Add(speedBuffIcon);
-        moveSpeedBuffCounter = speedDuration; // length of buff in seconds
-        moveSpeedBuffMultiplier = speedMultiplier;
-        speedBuffIcon.SetActive(true);
-    }
-
-    public void ApplyDamageBuff(float attackMultiplier = 1.2f, float attackDuration = 30f)
-    {
-        activeBuffs.Add(damageBuffIcon);
-        damageBuffCounter = attackDuration; // length of buff in seconds
-        damageBuffMultiplier = attackMultiplier;
-        damageBuffIcon.SetActive(true);
+        // only perform the checks if the buff does not exist already
+        if(!activeBuffs.Contains(booster))
+        {
+            switch (booster.attributeToBoost)
+            {
+                case AttributeType.Speed:
+                    UIIcon.SetActive(true);
+                    activeBuffs.Add(booster);
+                    moveSpeedBuffCounter = booster.boostDuration;
+                    moveSpeedBuffMultiplier = booster.boostValue;
+                    break;
+                case AttributeType.Damage:
+                    UIIcon.SetActive(true);
+                    activeBuffs.Add(booster);
+                    damageBuffCounter = booster.boostDuration;
+                    damageBuffMultiplier = booster.boostValue;
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 
     public void CheckTempBuffsStatus()
     {
-        if (moveSpeedBuffCounter > 0)
+        /*foreach(TempBuffSO buff in activeBuffs)
         {
-            moveSpeedBuffCounter -= Time.deltaTime;
-            speedBuffText.text = moveSpeedBuffCounter.ToString("00");
-        }
-        else
-        {
-            moveSpeedBuffMultiplier = 1f;
+            buff.boostDuration -= Time.deltaTime;
+            buff.buffDurationText.text = buff.boostDuration.ToString("00");
 
-            if(speedBuffIcon.activeSelf)
+            if (buff.boostDuration <= 0)
             {
-                activeBuffs.Remove(speedBuffIcon);
-                speedBuffIcon.SetActive(false);
-            }
-        }
+                buff.buffIcon.SetActive(false);
+                activeBuffs.Remove(buff);
 
-        if (damageBuffCounter > 0)
-        {
-            damageBuffCounter -= Time.deltaTime;
-            damageBuffText.text = damageBuffCounter.ToString("00");
-        }
-        else
-        {
-            damageBuffMultiplier = 1f;
-
-            if (damageBuffIcon.activeSelf)
-            {
-                activeBuffs.Remove(damageBuffIcon);
-                damageBuffIcon.SetActive(false);
+                switch (buff.attributeToBoost)
+                {
+                    case AttributeType.Speed:
+                        moveSpeedBuffMultiplier = 1f;
+                        break;
+                    case AttributeType.Damage:
+                        damageBuffMultiplier = 1f;
+                        break;
+                    default:
+                        break;
+                }
             }
-        }
+        }*/
     }
 }
