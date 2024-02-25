@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float moveSpeed = 4f, pickupRange = 1.5f;
+    [Header("Base Player Stats")]
+    public float moveSpeed = 4f;
+    public float pickupRange = 1.5f;
+    public float critChance = 0f;
+    public float critMultiplier = 2f; // by default dmg x2
     public int maxWeapons = 3;
     public static PlayerController instance;
     //public BaseWeapon activeWeapon;
@@ -14,7 +18,8 @@ public class PlayerController : MonoBehaviour
     public Vector3 movementDirections = Vector3.zero;
 
     Animator playerAnim;
-    
+    CapsuleCollider2D playerBody;
+    public SpriteRenderer playerIcon;
 
     private void Awake()
     {
@@ -30,7 +35,10 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         playerAnim = GetComponent<Animator>();
-        AddWeapon(Random.Range(0, unassignedWeapons.Count));
+        playerBody = GetComponent<CapsuleCollider2D>();
+
+        // if no weapon is assigned then add a random weapon to the player
+        SetupStartingWeapons();
 
         moveSpeed = PlayerStatsController.instance.moveSpeed[0].value;
         pickupRange = PlayerStatsController.instance.pickupRange[0].value;
@@ -59,6 +67,21 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void SetupStartingWeapons()
+    {
+        if (assignedWeapons.Count < 1)
+        {
+            AddWeapon(Random.Range(0, unassignedWeapons.Count));
+        }
+        else
+        {
+            foreach (BaseWeapon weapon in assignedWeapons)
+            {
+                weapon.gameObject.SetActive(true);
+            }
+        }
+    }
+
     public void AddWeapon(int weaponNumber)
     {
         if(weaponNumber < unassignedWeapons.Count)
@@ -77,4 +100,20 @@ public class PlayerController : MonoBehaviour
         assignedWeapons.Add(weaponToAdd);
         unassignedWeapons.Remove(weaponToAdd);
     }
+
+    public void OnCollisionEnter2D(Collision2D other)
+    {
+        // open chest on touching it
+        if(other.gameObject.CompareTag("Chest"))
+        {
+            Chest chestObject = other.gameObject.GetComponent<Chest>();
+            
+            if(chestObject != null)
+            {
+                chestObject.OpenChest();
+            }
+        }
+    }
+
+    
 }

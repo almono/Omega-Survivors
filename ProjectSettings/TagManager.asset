@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - DestructibleItem
   - XP
+  - Chest
   layers:
   - Default
   - TransparentFX
@@ -52,6 +53,9 @@ TagManager:
     locked: 0
   - name: Weapons
     uniqueID: 1688960103
+    locked: 0
+  - name: Chests
+    uniqueID: 2389122827
     locked: 0
   - name: Pickups
     uniqueID: 223322389

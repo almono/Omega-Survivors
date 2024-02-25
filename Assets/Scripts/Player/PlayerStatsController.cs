@@ -5,9 +5,23 @@ using UnityEngine;
 public class PlayerStatsController : MonoBehaviour
 {
     public static PlayerStatsController instance;
-    public List<PlayerStatsValue> moveSpeed, health, pickupRange, maxWeapons;
-    public int moveSpeedLevelCount, healthLevelCount, pickupRangeLevelCount; // how many levels these stats have in total
-    public int moveSpeedLevel, healthLevel, pickupRangeLevel, maxWeaponsLevel;
+
+    [Header("Stat upgrades with costs")]
+    public List<PlayerStatsValue> moveSpeed;
+    public List<PlayerStatsValue> health;
+    public List<PlayerStatsValue> pickupRange;
+    public List<PlayerStatsValue> maxWeapons;
+
+    [Header("Max stat levels")]
+    public int moveSpeedLevelCount;
+    public int healthLevelCount;
+    public int pickupRangeLevelCount;
+
+    [Header("Current stat levels")]
+    public int moveSpeedLevel;
+    public int healthLevel;
+    public int pickupRangeLevel;
+    public int maxWeaponsLevel;
 
     private void Awake()
     {

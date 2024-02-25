@@ -22,14 +22,14 @@ public class DamageNumberController : MonoBehaviour
         }
     }
 
-    public void SpawnDamageNumber(float damage, Vector3 location)
+    public void SpawnDamageNumber(float damage, Vector3 location, bool isCritNumber = false)
     {
         int numberToShow = Mathf.RoundToInt(damage);
 
         //DamageNumber damageNumber = Instantiate(numberToSpawn, location, Quaternion.identity, numberCanvas);
         DamageNumber damageNumber = GetFromPool();
 
-        damageNumber.Setup(numberToShow);
+        damageNumber.Setup(numberToShow, isCritNumber);
         damageNumber.gameObject.SetActive(true);
         damageNumber.transform.position = location;
     }

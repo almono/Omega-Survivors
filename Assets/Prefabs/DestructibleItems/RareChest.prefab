@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 6921573183299145083}
   - component: {fileID: 2503613719421760777}
   - component: {fileID: 1319670064791774890}
+  - component: {fileID: -4176732018751616614}
   m_Layer: 8
   m_Name: RareChest
-  m_TagString: DestructibleItem
+  m_TagString: Chest
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -73,10 +74,10 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1905844469
+  m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: -476659253, guid: 85607ab1d2d477245a061cecc1c91664, type: 3}
+  m_Sprite: {fileID: -620326528, guid: ad0f92d7bcbacb649bef6dc3ab5613e2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -119,18 +120,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.0020212978}
+  m_Offset: {x: -0.28172767, y: -0.21581474}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1.7142857, y: 1.1428572}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.90702105}
+  m_Size: {x: 1.0199807, y: 0.75117177}
   m_EdgeRadius: 0
 --- !u!50 &2503613719421760777
 Rigidbody2D:
@@ -175,9 +176,33 @@ MonoBehaviour:
   hitsToDestroy: 1
   maxItemDropCount: 4
   shouldDropItems: 1
+  canBeDestroyed: 1
   dropItems:
-  - item: {fileID: 1982328279552132053, guid: 78e00c7d832006d41ab79f583b9b9403, type: 3}
-    dropChance: 0.1
+  - item: {fileID: -6244632679483983985, guid: 9f54c74b2e7b0b94aac9d92d807923ef, type: 3}
+    dropChance: 1
+  - item: {fileID: -6244632679483983985, guid: 4d44965c7f2f5e7459c306f012c23f04, type: 3}
+    dropChance: 1
   coinDrop: {fileID: 7092762371766951232, guid: 1b67cc5c34f035e4da4030e3c9581096, type: 3}
   spawnChance: 0
   rarity: 1
+--- !u!95 &-4176732018751616614
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3204708463830175103}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 24a7f175de712f14cb800f210fec739e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

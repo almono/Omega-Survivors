@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6921573183299145083}
   - component: {fileID: 2503613719421760777}
   - component: {fileID: 1319670064791774890}
+  - component: {fileID: 5864865719478592623}
   m_Layer: 8
   m_Name: LegendaryChest
   m_TagString: DestructibleItem
@@ -76,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -476659253, guid: 85607ab1d2d477245a061cecc1c91664, type: 3}
+  m_Sprite: {fileID: 1094134801, guid: ad0f92d7bcbacb649bef6dc3ab5613e2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -119,18 +120,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.0020212978}
+  m_Offset: {x: -0.28591144, y: -0.21359587}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1.7142857, y: 1.1428572}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.90702105}
+  m_Size: {x: 1.0152485, y: 0.7507229}
   m_EdgeRadius: 0
 --- !u!50 &2503613719421760777
 Rigidbody2D:
@@ -175,9 +176,31 @@ MonoBehaviour:
   hitsToDestroy: 1
   maxItemDropCount: 5
   shouldDropItems: 1
+  canBeDestroyed: 1
   dropItems:
   - item: {fileID: 1982328279552132053, guid: 78e00c7d832006d41ab79f583b9b9403, type: 3}
     dropChance: 0.1
   coinDrop: {fileID: 7092762371766951232, guid: 1b67cc5c34f035e4da4030e3c9581096, type: 3}
   spawnChance: 0
   rarity: 2
+--- !u!95 &5864865719478592623
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3204708463830175103}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6d192f2e4db4da44ca6603603ff25797, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

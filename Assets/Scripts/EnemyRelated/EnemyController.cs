@@ -94,7 +94,7 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    public void TakeDamage(float damageValue)
+    public void TakeDamage(float damageValue, bool isCrit = false)
     {
         health -= damageValue;
 
@@ -114,11 +114,18 @@ public class EnemyController : MonoBehaviour
             Destroy(gameObject);
         } else
         {
-            StartCoroutine(Flash());
+            if(SettingsController.instance.enemyFlash)
+            {
+                StartCoroutine(Flash());
+            }
+            
             SFXManager.instance.PlaySFXPitched(1);
         }
 
-        DamageNumberController.instance.SpawnDamageNumber(damageValue, transform.position);
+        if(SettingsController.instance.damageNumbers)
+        {
+            DamageNumberController.instance.SpawnDamageNumber(damageValue, transform.position, isCrit);
+        }
     }
 
     private IEnumerator Flash()
@@ -133,9 +140,9 @@ public class EnemyController : MonoBehaviour
         enemySprite.material.color = Color.white;
     }
 
-    public void TakeDamage(float damageValue, bool applyKnockback)
+    public void TakeDamage(float damageValue, bool applyKnockback, bool isCrit)
     {
-        TakeDamage(damageValue);
+        TakeDamage(damageValue, isCrit);
 
         if(applyKnockback)
         {

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyDamager : MonoBehaviour
 {
+    [Header("Basic Config")]
     public float damageValue = 10f;
     public float lifetime = 3f, growSpeed = 3f;
     public bool hasKnockback = true, destroyParent, changeSizeOverTime = false, piercingWeapon = false;
@@ -11,10 +12,27 @@ public class EnemyDamager : MonoBehaviour
     public bool isPermanent = false; // for weapons like auras, they should be permanent and only get destroyed/spawned when upgraded
     private Vector3 targetSize;
 
+    // when enemy gets hit
+    [Header("Hit Effects")]
+    public GameObject hitEffect;
+    public AudioClip hitEffectSound;
+    public float hitEffectDamageScale = 1f;
+
+    [Header("On hit projectile spawner")]
+    public GameObject hitEffectObject;
+    public int hitEffectObjectAmount = 1;
+
+    // if the main damager should spawn any additional sub-damagers
+    [Header("Subprojectile spawner")]
+    public SubProjectile subDamager;
+    public int subDamagerAmount = 1, subDamagerReleaseCount = 1;
+    public float subDamagerReleaseCooldown = 1f;
+
     [Header("AOE Attacks")]
     public bool isDamageOverTime;
     public float damageOverTimeFrequency;
     private float damageOverTimeCounter;
+
     private List<EnemyController> enemiesInRange = new List<EnemyController>();
     private List<DestructibleItem> destructibleInRange = new List<DestructibleItem>();
 
@@ -46,15 +64,11 @@ public class EnemyDamager : MonoBehaviour
         if(lifetime <= 0)
         {
             targetSize = Vector3.zero;
+            Destroy(gameObject);
 
-            if(transform.localScale.x <= 0)
+            if (destroyParent)
             {
-                Destroy(gameObject);
-
-                if (destroyParent)
-                {
-                    Destroy(transform.parent.gameObject);
-                }               
+                Destroy(transform.parent.gameObject);
             }
         }
 
@@ -70,7 +84,9 @@ public class EnemyDamager : MonoBehaviour
                 {
                     if (enemiesInRange[i] != null)
                     {
+                        // damage over time attack CAN NOT crit
                         float finalDamage = damageValue * TempBuffController.instance.damageBuffMultiplier;
+                        //damageDealt += finalDamage * enemiesInRange.Count;
                         enemiesInRange[i].TakeDamage(finalDamage);
                     } else
                     {
@@ -115,7 +131,23 @@ public class EnemyDamager : MonoBehaviour
             if (other.gameObject.CompareTag("Enemy"))
             {
                 float finalDamage = damageValue * TempBuffController.instance.damageBuffMultiplier;
-                other.GetComponent<EnemyController>().TakeDamage(finalDamage, hasKnockback);
+
+                // check if the damage will be a crit
+                bool isCrit = false;
+                float critChanceRoll = Random.Range(0f, 1f);
+                if (critChanceRoll <= (PlayerController.instance.critChance + TempBuffController.instance.critChanceMultiplier))
+                {
+                    finalDamage *= (PlayerController.instance.critMultiplier + TempBuffController.instance.critMultiplierValue); // multiply final damage by crit multiplier stat
+                    isCrit = true;
+                }
+
+                if (hitEffect != null)
+                {
+                    CreateHitEffect();
+                }
+
+                //damageDealt += finalDamage;
+                other.GetComponent<EnemyController>().TakeDamage(finalDamage, hasKnockback, isCrit);                
 
                 // check for potential piercing attribute
                 if(piercingWeapon)
@@ -131,7 +163,17 @@ public class EnemyDamager : MonoBehaviour
                 }
             } else if(other.gameObject.CompareTag("DestructibleItem"))
             {
-                other.GetComponent<DestructibleItem>().TakeHit();
+                DestructibleItem destructible = other.GetComponent<DestructibleItem>();
+
+                if(destructible.canBeDestroyed)
+                {
+                    if (hitEffect != null)
+                    {
+                        CreateHitEffect();
+                    }
+
+                    destructible.TakeHit();
+                }
 
                 if (piercingWeapon)
                 {
@@ -159,6 +201,19 @@ public class EnemyDamager : MonoBehaviour
                     enemiesInRange.Remove(other.GetComponent<EnemyController>());
                 }
             }
+        }
+    }
+
+    private void CreateHitEffect()
+    {
+        GameObject newHitEffect = Instantiate(hitEffect, transform.position, transform.rotation);
+        newHitEffect.SetActive(true);
+        HitEffectController hitDamager = newHitEffect.GetComponent<HitEffectController>();
+
+        if (hitDamager != null)
+        {
+            hitDamager.mainDamage = damageValue;
+            hitDamager.damageScale = hitEffectDamageScale;
         }
     }
 }

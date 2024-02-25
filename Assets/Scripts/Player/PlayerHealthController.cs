@@ -39,6 +39,7 @@ public class PlayerHealthController : MonoBehaviour
 
         if (currentHealth <= 0) 
         {
+            UIController.instance.SetDamageResults();
             SFXManager.instance.PlaySFXPitched(3);
             Destroy(gameObject);
             GameManager.instance.EndLevel();

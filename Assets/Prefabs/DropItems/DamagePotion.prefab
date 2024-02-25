@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4509578927122517027}
   - component: {fileID: 7342596173075384905}
   - component: {fileID: 9168704505710187886}
-  - component: {fileID: 876152120857903815}
+  - component: {fileID: -8633666586103250878}
   m_Layer: 0
   m_Name: DamagePotion
   m_TagString: Untagged
@@ -131,7 +131,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5198996, y: 0.6731347}
   m_EdgeRadius: 0
---- !u!114 &876152120857903815
+--- !u!114 &-8633666586103250878
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -140,8 +140,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 8359949078518642009}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 058db33107e26d34284706b2f1251783, type: 3}
+  m_Script: {fileID: 11500000, guid: d02eee4ac0ec3c74fa91c2a58edc12f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackBuffValue: 1.2
-  attackBuffDuration: 30
+  buffValues: {fileID: 11400000, guid: 3ef6c20d8aff93344aa6d91e2365e67f, type: 2}
+  pickupType: 0
+  pickupName: DamagePotion

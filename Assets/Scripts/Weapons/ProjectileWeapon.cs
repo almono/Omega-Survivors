@@ -1,14 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class ProjectileWeapon : BaseWeapon
 {
     public EnemyDamager enemyDamager;
     public Projectile projectile;
+    public SubProjectile subProjectile;
 
     private float shotCounter; // how often we fire
     public float weaponRange; // how far it goes
+    public bool targetClosestEnemy = false; // if should target closest enemy or shoot towards random angle
 
     public LayerMask whatIsEnemy; // to find out nearest enemy
 
@@ -29,7 +32,7 @@ public class ProjectileWeapon : BaseWeapon
 
         shotCounter -= Time.deltaTime;
 
-        if(shotCounter <= 0 )
+        if(shotCounter <= 0)
         {
             shotCounter = stats[weaponLevel].attackCooldown;
 
@@ -37,7 +40,7 @@ public class ProjectileWeapon : BaseWeapon
             // get all enemies on that layer in that range
             Collider2D[] enemies = Physics2D.OverlapCircleAll(transform.position, weaponRange * stats[weaponLevel].range, whatIsEnemy);
 
-            if(enemies.Length > 0 )
+            if(enemies.Length > 0 && targetClosestEnemy)
             {
                 // for on each PROJECTILE / WEAPON so we can set all of their position ( amount upgrade )
                 for(int i = 0; i < stats[weaponLevel].amount; i++)
@@ -50,22 +53,47 @@ public class ProjectileWeapon : BaseWeapon
                     angle -= 90; // because sprite is facing up
                     projectile.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward); // set the rotation of projectile
 
-                    Instantiate(projectile, projectile.transform.position, projectile.transform.rotation).gameObject.SetActive(true);
+                    Projectile newProjectile = Instantiate(projectile, projectile.transform.position, projectile.transform.rotation);
+                    newProjectile.gameObject.SetActive(true);
+
+                    if(enemyDamager.subDamager)
+                    {
+                        newProjectile.SetSubProjectiles(enemyDamager.subDamager, enemyDamager.subDamagerAmount, enemyDamager.subDamagerReleaseCount, enemyDamager.subDamagerReleaseCooldown);
+                    }
                 }
 
                 SFXManager.instance.PlaySFXPitched(6);
+            } else if(!targetClosestEnemy)
+            {
+                for (int i = 0; i < stats[weaponLevel].amount; i++)
+                {
+                    Projectile newProjectile = Instantiate(projectile, projectile.transform.position, Quaternion.AngleAxis(Random.Range(0, 360), Vector3.forward));
+                    newProjectile.gameObject.SetActive(true);
+
+                    if (enemyDamager.subDamager)
+                    {
+                        newProjectile.SetSubProjectiles(enemyDamager.subDamager, enemyDamager.subDamagerAmount, enemyDamager.subDamagerReleaseCount, enemyDamager.subDamagerReleaseCooldown);
+                    }
+                }
             }
         }
     }
 
     public void SetStats()
     {
-        enemyDamager.damageValue = stats[weaponLevel].damage;
-        enemyDamager.lifetime = stats[weaponLevel].duration;
-        enemyDamager.piercingWeapon = true;
-        enemyDamager.piercingCount = stats[weaponLevel].piercingCount;
+        if(enemyDamager != null)
+        {
+            enemyDamager.damageValue = stats[weaponLevel].damage;
+            enemyDamager.lifetime = stats[weaponLevel].duration;
+            enemyDamager.subDamagerAmount = stats[weaponLevel].subProjectileCount;
+            enemyDamager.subDamagerReleaseCount = stats[weaponLevel].subProjectileReleaseCount;
+            enemyDamager.subDamagerReleaseCooldown = stats[weaponLevel].subDamagerReleaseCooldown;
+
+            enemyDamager.transform.localScale = Vector3.one * stats[weaponLevel].range;
+
+            enemyDamager.piercingCount = stats[weaponLevel].piercingCount;
+        }
+        
         projectile.moveSpeed = stats[weaponLevel].speed;
-        enemyDamager.transform.localScale = Vector3.one * stats[weaponLevel].range;
-        shotCounter = 0f;
     }
 }

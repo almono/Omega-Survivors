@@ -9,6 +9,14 @@ public class Chest : DestructibleItem
     public float spawnChance; // chance to be dropped/created
     public ChestRarity rarity;
 
+    Animator chestAnimator;
+
+    private void Start()
+    {
+        chestAnimator = GetComponent<Animator>();
+        canBeDestroyed = false; // chests need to be interacted with
+    }
+
     public override float GetSpawnChance()
     {
         switch (rarity)
@@ -54,7 +62,7 @@ public class Chest : DestructibleItem
                 if (randomValue < lootItem.GetDropChance())
                 {
                     // Return the dropped item prefab
-                    PickupItem newItemDrop = Instantiate(lootItem.item, new Vector3(chestPosition.x + Random.Range(-0.5f, 0.5f), chestPosition.y + Random.Range(-0.5f, 0.5f)), Quaternion.identity);
+                    PickupItem newItemDrop = Instantiate(lootItem.item, new Vector3(transform.position.x + Random.Range(-0.5f, 0.5f), transform.position.y + Random.Range(-0.5f, 0.5f)), Quaternion.identity);
                     droppedItems++;
                 }
 
@@ -74,11 +82,25 @@ public class Chest : DestructibleItem
         {
             while (droppedItems < maxItemDropCount)
             {
-                Coin newCoin = Instantiate(coinDrop, new Vector3(chestPosition.x + Random.Range(-0.6f, 0.6f), chestPosition.y + Random.Range(-0.5f, 0.5f)), Quaternion.identity);
+                Coin newCoin = Instantiate(coinDrop, new Vector3(transform.position.x + Random.Range(-0.6f, 0.6f), transform.position.y + Random.Range(-0.5f, 0.5f)), Quaternion.identity);
                 SetCoinValueByRarity(newCoin);
                 droppedItems++;
             }
         }
+    }
+
+    public void OpenChest()
+    {
+        // trigger the bool value only once
+        if(!chestAnimator.GetBool("isOpening"))
+        {
+            chestAnimator.SetBool("isOpening", true);
+        }
+    }
+
+    public void DestroyChest()
+    {
+        Destroy(gameObject);
     }
 
     public void SetCoinValueByRarity(Coin coin)

@@ -12,8 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ca16baf4663a8249a4c388dd8363070, type: 3}
   m_Name: SpeedPotion
   m_EditorClassIdentifier: 
-  buffIcon: {fileID: 0}
-  buffDurationText: {fileID: 0}
   itemName: Temporary Boost
   attributeToBoost: 0
   boostDuration: 30

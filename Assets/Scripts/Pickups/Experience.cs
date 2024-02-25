@@ -16,7 +16,10 @@ public class Experience : MonoBehaviour
 
     private void Start()
     {
-        player = PlayerHealthController.instance.GetComponent<PlayerController>();
+        if(PlayerHealthController.instance != null)
+        {
+            player = PlayerHealthController.instance.GetComponent<PlayerController>();
+        }
     }
 
     private void Update()
@@ -82,7 +85,6 @@ public class Experience : MonoBehaviour
                 {
                     if (xpObject.gameObject == gameObject)
                     {
-                        Debug.Log("Skipped same object");
                         continue;
                     }
 

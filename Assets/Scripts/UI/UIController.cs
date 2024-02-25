@@ -13,7 +13,7 @@ public class UIController : MonoBehaviour
     public string mainMenuName = "MainMenu";
 
     public LevelUpSelectionBtn[] levelUpButtons;
-    public GameObject levelUpPanel, levelEndScreen, pauseScreen, levelUpsLeft;
+    public GameObject levelUpPanel, levelEndScreen, pauseScreen, levelUpsLeft, weaponDamageListHolder, weaponDamageResult;
 
     public PlayerStatUpgradeDisplay moveSpeedUpgradeDisplay, healthUpgradeDisplay, rangeUpgradeDisplay, maxWeaponsUpgradeDisplay;
 
@@ -119,6 +119,16 @@ public class UIController : MonoBehaviour
         {
             pauseScreen.SetActive(true);
             Time.timeScale = 0f;
+        }
+    }
+
+    public void SetDamageResults()
+    {
+        for(int i = 0; i < PlayerController.instance.assignedWeapons.Count; i++)
+        {
+            GameObject damageResult = Instantiate(weaponDamageResult, transform.position, Quaternion.identity, weaponDamageListHolder.transform);
+            DamageResult damageResultValues = damageResult.GetComponent<DamageResult>();
+            //Debug.Log(PlayerController.instance.assignedWeapons.enemyDamager);
         }
     }
 }

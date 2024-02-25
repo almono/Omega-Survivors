@@ -12,20 +12,12 @@ public class TempBuffSO : ScriptableObject
     public float boostDuration = 30f;
     public float maxDuration = 30f;
     public float boostValue = 1.5f;
-
-    public GameObject GetBuffIcon(SpeedPotion parentObject)
-    {
-        return parentObject.buffIcon;
-    }
-
-    public TMP_Text GetBuffText(SpeedPotion parentObject)
-    {
-        return parentObject.buffText;
-    }
 }
 
 public enum AttributeType
 {
     Speed,
-    Damage
+    Damage,
+    CritChance,
+    CritMultiplier
 }

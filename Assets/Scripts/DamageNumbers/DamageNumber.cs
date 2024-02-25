@@ -27,9 +27,19 @@ public class DamageNumber : MonoBehaviour
         }
     }
 
-    public void Setup(int damageToDisplay)
+    public void Setup(int damageToDisplay, bool isCritNumber = false)
     {
         lifeCounter = textLifetime;
         damageText.text = damageToDisplay.ToString();
+
+        if(isCritNumber )
+        {
+            damageText.color = Color.red;
+            damageText.fontSize = 80;
+        } else
+        {
+            damageText.color = Color.white;
+            damageText.fontSize = 70;
+        }
     }
 }

@@ -34,7 +34,7 @@ public class BaseWeapon : MonoBehaviour
 [System.Serializable]
 public class WeaponStats
 {
-    public float speed, damage, range, attackCooldown, amount, duration;
-    public int piercingCount;
+    public float speed, damage, range, attackCooldown, amount, duration, subDamagerReleaseCooldown = 1f;
+    public int piercingCount, subProjectileCount = 0, subProjectileReleaseCount = 0;
     public string nextUpgradeText;
 }
