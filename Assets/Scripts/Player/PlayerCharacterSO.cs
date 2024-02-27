@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "NewCharacter", menuName = "New Character Stats")]
 
@@ -15,15 +16,22 @@ public class PlayerCharacterSO : ScriptableObject
     public int maxWeapons = 3; // 3 default
 
     public BaseWeapon usedWeapon; // weapon the player would start with
-    public Sprite playerIcon; // to be used on character selection screen
+    public Image playerIcon; // to be used on character selection screen
 
     public string GetName()
     {
         return characterName;
     }
 
-    public Sprite GetPlayerIcon()
+    public Image GetPlayerIcon()
     {
         return playerIcon;
     }
+
+    public float GetSpeed() { return moveSpeed; }
+    public float GetPickupRange() { return pickupRange; }
+    public float GetCritChance() {  return critChance; }
+    public float GetCritMultiplier() {  return critMultiplier; }
+    public int GetMaxWeapons() {  return maxWeapons; }
+    public BaseWeapon GetUsedWeapon() {  return usedWeapon; }
 }

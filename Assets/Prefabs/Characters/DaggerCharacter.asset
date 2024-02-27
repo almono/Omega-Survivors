@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67381ea9f4eb0644aa84654395f6c5fa, type: 3}
   m_Name: DaggerCharacter
   m_EditorClassIdentifier: 
+  characterName: Rogue
   moveSpeed: 6
   pickupRange: 0.5
   critChance: 0

@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     private bool gameIsActive;
     public float gameTimer, waitToShowEndScreen = 1f;
+    private PlayerCharacterSO selectedPlayerCharacter;
 
     private void Awake()
     {
@@ -27,7 +28,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if(gameIsActive)
+        if(gameIsActive && UIController.instance)
         {
             gameTimer += Time.deltaTime;
             UIController.instance.UpdateTimerText(gameTimer);
@@ -38,6 +39,16 @@ public class GameManager : MonoBehaviour
     {
         gameIsActive = false;
         StartCoroutine(EndLevelCo());
+    }
+
+    public void SetPlayerCharacter(PlayerCharacterSO playerCharacter)
+    {
+        selectedPlayerCharacter = playerCharacter;
+    }
+
+    public PlayerCharacterSO GetPlayerCharacter()
+    {
+        return selectedPlayerCharacter;
     }
 
     IEnumerator EndLevelCo()

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CharacterSelector : MonoBehaviour
 {
@@ -29,11 +30,15 @@ public class CharacterSelector : MonoBehaviour
         foreach(PlayerCharacterSO character in availableCharacters)
         {
             GameObject newCharacterOption = Instantiate(characterOption, transform.position, Quaternion.identity, characterSelectorDisplay);
+            newCharacterOption.SetActive(true);
 
             CharacterOptionBtn characterConfig = newCharacterOption.GetComponent<CharacterOptionBtn>();
             characterConfig.playerCharacter = character;
             characterConfig.characterName.text = character.GetName();
             characterConfig.characterImage = character.GetPlayerIcon();
+
+            Image characterIcon = GetComponentInChildren<Image>();
+            characterIcon = character.GetPlayerIcon();
         }
     }
 }

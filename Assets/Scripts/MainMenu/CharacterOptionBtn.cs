@@ -8,7 +8,7 @@ public class CharacterOptionBtn : MonoBehaviour
 {
     public PlayerCharacterSO playerCharacter;
     public TMP_Text characterName;
-    public Sprite characterImage;
+    public Image characterImage;
 
     public void SetSelectedCharacter()
     {
