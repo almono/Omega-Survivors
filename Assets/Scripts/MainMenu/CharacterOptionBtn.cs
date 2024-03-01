@@ -13,5 +13,6 @@ public class CharacterOptionBtn : MonoBehaviour
     public void SetSelectedCharacter()
     {
         CharacterSelector.instance.selectedCharacter = playerCharacter;
+        GameManager.instance.SetPlayerCharacter(playerCharacter);
     }
 }

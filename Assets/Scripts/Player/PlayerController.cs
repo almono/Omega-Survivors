@@ -37,12 +37,10 @@ public class PlayerController : MonoBehaviour
         playerAnim = GetComponent<Animator>();
         playerBody = GetComponent<CapsuleCollider2D>();
 
+        SetupSelectedCharacter();
+
         // if no weapon is assigned then add a random weapon to the player
         SetupStartingWeapons();
-
-        moveSpeed = PlayerStatsController.instance.moveSpeed[0].value;
-        pickupRange = PlayerStatsController.instance.pickupRange[0].value;
-        maxWeapons = Mathf.RoundToInt(PlayerStatsController.instance.maxWeapons[0].value);
     }
 
     void Update()
@@ -64,6 +62,21 @@ public class PlayerController : MonoBehaviour
         } else
         {
             playerAnim.SetBool("isMoving", false);
+        }
+    }
+
+    public void SetupSelectedCharacter()
+    {
+        PlayerCharacterSO selectedCharacterData = GameManager.instance.GetPlayerCharacter();
+
+        if(selectedCharacterData)
+        {
+
+        } else
+        {
+            moveSpeed = PlayerStatsController.instance.moveSpeed[0].value;
+            pickupRange = PlayerStatsController.instance.pickupRange[0].value;
+            maxWeapons = Mathf.RoundToInt(PlayerStatsController.instance.maxWeapons[0].value);
         }
     }
 

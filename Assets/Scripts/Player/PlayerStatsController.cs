@@ -36,8 +36,63 @@ public class PlayerStatsController : MonoBehaviour
 
     void Start()
     {
+        PlayerCharacterSO selectedCharacterData = GameManager.instance.GetPlayerCharacter();
+
+        if (selectedCharacterData)
+        {
+            // if there is a custom character selected then get base values and scalling from its SO
+            moveSpeed = new List<PlayerStatsValue>();
+            health = new List<PlayerStatsValue>();
+            pickupRange = new List<PlayerStatsValue>();
+            maxWeapons = new List<PlayerStatsValue>();
+
+            // prepare starting stats
+            moveSpeed.Add(new PlayerStatsValue(0, selectedCharacterData.moveSpeed));
+            health.Add(new PlayerStatsValue(0, selectedCharacterData.health));
+            pickupRange.Add(new PlayerStatsValue(0, selectedCharacterData.pickupRange));
+
+            for (int i = moveSpeed.Count - 1; i < moveSpeedLevelCount; i++)
+            {
+                moveSpeed.Add(new PlayerStatsValue(
+                    selectedCharacterData.moveSpeedStartingCost + (selectedCharacterData.moveSpeedStartingCost + selectedCharacterData.moveSpeedCostIncrement), 
+                    selectedCharacterData.moveSpeed + (moveSpeed[i - 1].value * selectedCharacterData.moveSpeedIncrement)
+                ));
+            }
+
+            for (int i = health.Count - 1; i < healthLevelCount; i++)
+            {
+                health.Add(new PlayerStatsValue(
+                    selectedCharacterData.healthStartCost + (selectedCharacterData.healthStartCost + selectedCharacterData.healthCostIncrement),
+                    selectedCharacterData.health + (health[i - 1].value + selectedCharacterData.healthIncrement)
+                ));
+            }
+
+            for (int i = pickupRange.Count - 1; i < healthLevelCount; i++)
+            {
+                pickupRange.Add(new PlayerStatsValue(
+                    selectedCharacterData.pickupRangeStartingCost + (selectedCharacterData.pickupRangeStartingCost + selectedCharacterData.pickupRangeCostIncrement),
+                    selectedCharacterData.pickupRange + (pickupRange[i - 1].value * selectedCharacterData.pickupRangeIncrement)
+                ));
+            }
+        } else
+        {
+            SetupStatLists();
+        }
+    }
+
+    void Update()
+    {
+        // if display of upgrades is active then make sure everything is displaying correctly
+        if(UIController.instance.levelUpPanel.activeSelf)
+        {
+            UpdateUpgradesDisplay();
+        }    
+    }
+
+    public void SetupStatLists()
+    {
         // set up list of level upgrades
-        for(int i = moveSpeed.Count - 1; i < moveSpeedLevelCount; i++)
+        for (int i = moveSpeed.Count - 1; i < moveSpeedLevelCount; i++)
         {
             // add 5 to every next cost
             moveSpeed.Add(new PlayerStatsValue(moveSpeed[i].cost + moveSpeed[1].cost, moveSpeed[i].value + (moveSpeed[1].value - moveSpeed[0].value)));
@@ -52,15 +107,6 @@ public class PlayerStatsController : MonoBehaviour
         {
             pickupRange.Add(new PlayerStatsValue(pickupRange[i].cost + pickupRange[1].cost, pickupRange[i].value + (pickupRange[1].value - pickupRange[0].value)));
         }
-    }
-
-    void Update()
-    {
-        // if display of upgrades is active then make sure everything is displaying correctly
-        if(UIController.instance.levelUpPanel.activeSelf)
-        {
-            UpdateUpgradesDisplay();
-        }    
     }
 
     public void UpdateUpgradesDisplay()

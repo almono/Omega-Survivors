@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     private bool gameIsActive;
     public float gameTimer, waitToShowEndScreen = 1f;
-    private PlayerCharacterSO selectedPlayerCharacter;
+    public PlayerCharacterSO selectedPlayerCharacter;
 
     private void Awake()
     {
