@@ -71,7 +71,9 @@ public class PlayerController : MonoBehaviour
 
         if(selectedCharacterData)
         {
-
+            moveSpeed = selectedCharacterData.moveSpeed;
+            pickupRange = selectedCharacterData.pickupRange;
+            maxWeapons = selectedCharacterData.maxWeapons;
         } else
         {
             moveSpeed = PlayerStatsController.instance.moveSpeed[0].value;

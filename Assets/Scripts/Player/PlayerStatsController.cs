@@ -50,28 +50,40 @@ public class PlayerStatsController : MonoBehaviour
             moveSpeed.Add(new PlayerStatsValue(0, selectedCharacterData.moveSpeed));
             health.Add(new PlayerStatsValue(0, selectedCharacterData.health));
             pickupRange.Add(new PlayerStatsValue(0, selectedCharacterData.pickupRange));
+            maxWeapons.Add(new PlayerStatsValue(0, selectedCharacterData.maxWeapons));
 
-            for (int i = moveSpeed.Count - 1; i < moveSpeedLevelCount; i++)
+            for (int i = 1; i < moveSpeedLevelCount; i++)
             {
                 moveSpeed.Add(new PlayerStatsValue(
-                    selectedCharacterData.moveSpeedStartingCost + (selectedCharacterData.moveSpeedStartingCost + selectedCharacterData.moveSpeedCostIncrement), 
-                    selectedCharacterData.moveSpeed + (moveSpeed[i - 1].value * selectedCharacterData.moveSpeedIncrement)
+                    selectedCharacterData.moveSpeedStartingCost + (i * selectedCharacterData.moveSpeedCostIncrement), 
+                    moveSpeed[i - 1].value * selectedCharacterData.moveSpeedIncrement
                 ));
             }
 
-            for (int i = health.Count - 1; i < healthLevelCount; i++)
+            for (int i = 1; i < healthLevelCount; i++)
             {
                 health.Add(new PlayerStatsValue(
-                    selectedCharacterData.healthStartCost + (selectedCharacterData.healthStartCost + selectedCharacterData.healthCostIncrement),
-                    selectedCharacterData.health + (health[i - 1].value + selectedCharacterData.healthIncrement)
+                    selectedCharacterData.healthStartCost + (i * selectedCharacterData.healthCostIncrement),
+                    health[i - 1].value + selectedCharacterData.healthIncrement
                 ));
             }
 
-            for (int i = pickupRange.Count - 1; i < healthLevelCount; i++)
+            for (int i = 1; i < healthLevelCount; i++)
             {
                 pickupRange.Add(new PlayerStatsValue(
-                    selectedCharacterData.pickupRangeStartingCost + (selectedCharacterData.pickupRangeStartingCost + selectedCharacterData.pickupRangeCostIncrement),
-                    selectedCharacterData.pickupRange + (pickupRange[i - 1].value * selectedCharacterData.pickupRangeIncrement)
+                    selectedCharacterData.pickupRangeStartingCost + (i * selectedCharacterData.pickupRangeCostIncrement),
+                    pickupRange[i - 1].value * selectedCharacterData.pickupRangeIncrement
+                ));
+            }
+
+            // make sure you can upgrade max levels only till you can get all of the weapons
+            int maxPlayerWeapons = PlayerController.instance.unassignedWeapons.Count - (selectedCharacterData.maxWeapons - PlayerController.instance.assignedWeapons.Count);
+
+            for (int i = 1; i < maxPlayerWeapons; i++)
+            {
+                maxWeapons.Add(new PlayerStatsValue(
+                    maxWeapons[i - 1].cost == 0 ? Mathf.RoundToInt(selectedCharacterData.maxWeaponsStartingCost * selectedCharacterData.maxWeaponsCostIncrement) : Mathf.RoundToInt(maxWeapons[i - 1].cost * selectedCharacterData.maxWeaponsCostIncrement),
+                    maxWeapons[i - 1].value + 1
                 ));
             }
         } else

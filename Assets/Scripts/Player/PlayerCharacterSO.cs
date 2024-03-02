@@ -11,8 +11,8 @@ public class PlayerCharacterSO : ScriptableObject
 
     [Header("Speed Data")]
     public float moveSpeed = 4f; // 4f default
-    public float moveSpeedIncrement = 1.1f;
-    public int moveSpeedStartingCost = 5, moveSpeedCostIncrement = 5;
+    public float moveSpeedIncrement = 1.02f;
+    public int moveSpeedStartingCost = 50, moveSpeedCostIncrement = 100;
 
     [Header("Health Data")]
     public int health = 100; // 100 default
@@ -36,7 +36,7 @@ public class PlayerCharacterSO : ScriptableObject
     public int maxWeaponsStartingCost = 500;
     public float maxWeaponsCostIncrement = 3f; // x3 with each level
 
-    public BaseWeapon usedWeapon; // weapon the player would start with
+    public EnemyDamager usedWeapon; // weapon the player would start with
     public Image playerIcon; // to be used on character selection screen
 
     public string GetName()
@@ -54,5 +54,5 @@ public class PlayerCharacterSO : ScriptableObject
     public float GetCritChance() {  return critChance; }
     public float GetCritMultiplier() {  return critMultiplier; }
     public int GetMaxWeapons() {  return maxWeapons; }
-    public BaseWeapon GetUsedWeapon() {  return usedWeapon; }
+    public EnemyDamager GetUsedWeapon() {  return usedWeapon; }
 }

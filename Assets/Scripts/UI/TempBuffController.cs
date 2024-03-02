@@ -58,19 +58,15 @@ public class TempBuffController : MonoBehaviour
             switch (booster.buffValues.attributeToBoost)
             {
                 case AttributeType.Speed:
-                    Debug.Log(booster.pickupName + "---" + booster.buffValues.boostDuration);
                     moveSpeedBuffMultiplier = booster.buffValues.boostValue;
                     break;
                 case AttributeType.Damage:
-                    Debug.Log(booster.pickupName + "---" + booster.buffValues.boostDuration);
                     damageBuffMultiplier = booster.buffValues.boostValue;
                     break;
                 case AttributeType.CritChance:
-                    Debug.Log(booster.pickupName + "---" + booster.buffValues.boostDuration);
                     critChanceMultiplier = booster.buffValues.boostValue;
                     break;
                 case AttributeType.CritMultiplier:
-                    Debug.Log(booster.pickupName + "---" + booster.buffValues.boostDuration);
                     critMultiplierValue = booster.buffValues.boostValue;
                     break;
                 default:

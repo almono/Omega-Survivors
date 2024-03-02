@@ -26,10 +26,22 @@ public class PlayerHealthController : MonoBehaviour
 
     void Start()
     {
-        currentHealth = maxHealth;
-        maxHealth = PlayerStatsController.instance.health[0].value;
-        healthSlider.maxValue = maxHealth;
-        healthSlider.value = currentHealth;
+        PlayerCharacterSO selectedCharacterData = GameManager.instance.GetPlayerCharacter();
+
+        if (selectedCharacterData)
+        {
+            currentHealth = selectedCharacterData.health;
+            maxHealth = selectedCharacterData.health;
+            healthSlider.maxValue = maxHealth;
+            healthSlider.value = currentHealth;
+        }
+        else
+        {
+            currentHealth = maxHealth;
+            maxHealth = PlayerStatsController.instance.health[0].value;
+            healthSlider.maxValue = maxHealth;
+            healthSlider.value = currentHealth;
+        }
     }
 
     public void TakeDamage(float damage)
