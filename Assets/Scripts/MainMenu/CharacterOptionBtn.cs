@@ -14,5 +14,8 @@ public class CharacterOptionBtn : MonoBehaviour
     {
         CharacterSelector.instance.selectedCharacter = playerCharacter;
         GameManager.instance.SetPlayerCharacter(playerCharacter);
+
+        // update stats info
+        CharacterSelector.instance.UpdateStatsInfo(playerCharacter);
     }
 }

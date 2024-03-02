@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +12,8 @@ public class CharacterSelector : MonoBehaviour
     public List<PlayerCharacterSO> availableCharacters;
     public PlayerCharacterSO selectedCharacter;
     public GameObject characterOption;
+    public TMP_Text[] statsInfo;
+    public Button selectButton;
 
     private void Awake()
     {
@@ -25,9 +28,14 @@ public class CharacterSelector : MonoBehaviour
 
     private void Start()
     {
-        selectedCharacter = availableCharacters[0];
+        // ensure default character is set to first option
+        /*selectedCharacter = availableCharacters[0];
+        GameManager.instance.SetPlayerCharacter(selectedCharacter);
+        UpdateStatsInfo(selectedCharacter);*/
 
-        foreach(PlayerCharacterSO character in availableCharacters)
+        selectButton.interactable = false;
+
+        foreach (PlayerCharacterSO character in availableCharacters)
         {
             GameObject newCharacterOption = Instantiate(characterOption, transform.position, Quaternion.identity, characterSelectorDisplay);
             newCharacterOption.SetActive(true);
@@ -40,5 +48,16 @@ public class CharacterSelector : MonoBehaviour
             Image characterIcon = GetComponentInChildren<Image>();
             characterIcon = character.GetPlayerIcon();
         }
+    }
+
+    public void UpdateStatsInfo(PlayerCharacterSO selectedCharacter)
+    {
+        statsInfo[0].text = selectedCharacter.moveSpeed.ToString();
+        statsInfo[1].text = selectedCharacter.health.ToString();
+        statsInfo[2].text = selectedCharacter.pickupRange.ToString();
+        statsInfo[3].text = selectedCharacter.critChance.ToString();
+        statsInfo[4].text = selectedCharacter.critMultiplier.ToString();
+        statsInfo[5].text = selectedCharacter.maxWeapons.ToString();
+        selectButton.interactable = true;
     }
 }
