@@ -36,7 +36,7 @@ public class PlayerCharacterSO : ScriptableObject
     public int maxWeaponsStartingCost = 500;
     public float maxWeaponsCostIncrement = 3f; // x3 with each level
 
-    public EnemyDamager usedWeapon; // weapon the player would start with
+    public BaseWeapon usedWeapon; // weapon the player would start with
     public Image playerIcon; // to be used on character selection screen
 
     public string GetName()
@@ -54,5 +54,5 @@ public class PlayerCharacterSO : ScriptableObject
     public float GetCritChance() {  return critChance; }
     public float GetCritMultiplier() {  return critMultiplier; }
     public int GetMaxWeapons() {  return maxWeapons; }
-    public EnemyDamager GetUsedWeapon() {  return usedWeapon; }
+    public BaseWeapon GetUsedWeapon() {  return usedWeapon; }
 }

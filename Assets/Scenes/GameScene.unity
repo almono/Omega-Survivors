@@ -15761,6 +15761,10 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 4195627027153393056, guid: 691129eb0bfbf6547a910dea9043cc89, type: 3}
+      propertyPath: assignedWeapons.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4195627027153393056, guid: 691129eb0bfbf6547a910dea9043cc89, type: 3}
       propertyPath: assignedWeapons.Array.data[0]
       value: 
       objectReference: {fileID: 899450042}
@@ -15774,7 +15778,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4478400785843515032, guid: 691129eb0bfbf6547a910dea9043cc89, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4575012879656316960, guid: 691129eb0bfbf6547a910dea9043cc89, type: 3}
       propertyPath: stats.Array.data[2].range
@@ -15890,6 +15894,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5489219099342160669, guid: 691129eb0bfbf6547a910dea9043cc89, type: 3}
       propertyPath: hasKnockback
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6492935253322907485, guid: 691129eb0bfbf6547a910dea9043cc89, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7709086486882781374, guid: 691129eb0bfbf6547a910dea9043cc89, type: 3}

@@ -36,5 +36,5 @@ MonoBehaviour:
   maxWeapons: 4
   maxWeaponsStartingCost: 500
   maxWeaponsCostIncrement: 3
-  usedWeapon: {fileID: 0}
+  usedWeapon: {fileID: 6671169484664210182, guid: bc54a270fe546e7498d8c3ede15b0284, type: 3}
   playerIcon: {fileID: 0}

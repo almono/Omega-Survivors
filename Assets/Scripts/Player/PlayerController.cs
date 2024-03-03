@@ -84,6 +84,20 @@ public class PlayerController : MonoBehaviour
 
     public void SetupStartingWeapons()
     {
+        // if the custom character has a weapon they should start with then assign it
+        PlayerCharacterSO selectedCharacterData = GameManager.instance.GetPlayerCharacter();
+
+        if(selectedCharacterData && selectedCharacterData.usedWeapon)
+        {
+            int index = unassignedWeapons.FindIndex(element => element.name == selectedCharacterData.usedWeapon.name);
+            
+            // Check if the assigned character weapon exists, if yes then assign it to player on start
+            if(index != -1)
+            {
+                AddWeapon(index);
+            }
+        }
+
         if (assignedWeapons.Count < 1)
         {
             AddWeapon(Random.Range(0, unassignedWeapons.Count));
