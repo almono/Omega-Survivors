@@ -5,6 +5,7 @@ using UnityEngine;
 public class AchievementManager : MonoBehaviour
 {
     public AchievementManager instance;
+    public Achievement[] achievements;
 
     void Start()
     {
@@ -16,5 +17,9 @@ public class AchievementManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+    public void UpdateAchievementStatus(string achievementName, float progress)
+    {
+
     }
 }

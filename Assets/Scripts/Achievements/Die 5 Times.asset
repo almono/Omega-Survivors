@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4bb7f19ffed6ec4db531cbfcbc134e6, type: 3}
+  m_Name: Die 5 Times
+  m_EditorClassIdentifier: 
+  achievementName: Die 5 Times
+  currentProgress: 0
+  progressNeeded: 5
+  isUnlocked: 0

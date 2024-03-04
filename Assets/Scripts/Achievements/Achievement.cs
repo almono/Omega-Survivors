@@ -6,7 +6,7 @@ using UnityEngine;
 public class Achievement : ScriptableObject
 {
     public string achievementName;
-    public int currentProgress, progressNeeded;
+    public float currentProgress = 0f, progressNeeded = 1f;
     public bool isUnlocked;
 
     public void UpdateAchievementProgress(int progress)

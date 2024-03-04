@@ -6,12 +6,13 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     public string firstLevelName;
-    public GameObject mainMenu, characterSelector;
+    public GameObject mainMenu, characterSelector, achievementDisplay;
 
     private void Start()
     {
         mainMenu.SetActive(true);
         characterSelector.SetActive(false);
+        achievementDisplay.SetActive(false);
     }
 
     public void StartGame()
@@ -23,6 +24,14 @@ public class MainMenu : MonoBehaviour
     {
         mainMenu.SetActive(false);
         characterSelector.SetActive(true);
+        achievementDisplay.SetActive(false);
+    }
+
+    public void OpenAchievementWindow()
+    {
+        mainMenu.SetActive(false);
+        characterSelector.SetActive(false);
+        achievementDisplay.SetActive(true);
     }
 
     public void QuitGame()
