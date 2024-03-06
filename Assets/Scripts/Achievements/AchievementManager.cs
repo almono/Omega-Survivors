@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class AchievementManager : MonoBehaviour
 {
-    public AchievementManager instance;
+    public static AchievementManager instance;
     public Achievement[] achievements;
+    public GameObject achievementBox, achievementHolder;
 
     void Start()
     {
@@ -21,5 +22,11 @@ public class AchievementManager : MonoBehaviour
     public void UpdateAchievementStatus(string achievementName, float progress)
     {
 
+    }
+
+    public void ShowAchievement(Achievement achievement)
+    {
+        GameObject newAchievement = Instantiate(achievementBox, transform.position, Quaternion.identity, achievementHolder.transform);
+        newAchievement.SetActive(true);
     }
 }
