@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AchievementManager : MonoBehaviour
 {
@@ -19,6 +20,14 @@ public class AchievementManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Q))
+        {
+            ShowAchievement(achievements[0]);
+        }
+    }
     public void UpdateAchievementStatus(string achievementName, float progress)
     {
 
@@ -26,7 +35,10 @@ public class AchievementManager : MonoBehaviour
 
     public void ShowAchievement(Achievement achievement)
     {
-        GameObject newAchievement = Instantiate(achievementBox, transform.position, Quaternion.identity, achievementHolder.transform);
-        newAchievement.SetActive(true);
+        if(achievementHolder != null)
+        {
+            GameObject newAchievement = Instantiate(achievementBox, achievementHolder.transform.position, Quaternion.identity, achievementHolder.transform);
+            newAchievement.SetActive(true);
+        }
     }
 }
