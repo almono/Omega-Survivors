@@ -10,9 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4bb7f19ffed6ec4db531cbfcbc134e6, type: 3}
-  m_Name: DieOnce
+  m_Name: PlayerDeaths
   m_EditorClassIdentifier: 
-  achievementName: Die Once
-  currentProgress: 0
-  progressNeeded: 1
-  isUnlocked: 0
+  achievementName: Die
+  achievementDescription: 
+  currentProgress: 7
+  currentAchievementLevel: 1
+  isFullyUnlocked: 0
+  achievementStages:
+  - subDescription: 
+    stageLevel: 1
+    progressRequired: 5
+  - subDescription: 
+    stageLevel: 2
+    progressRequired: 15

@@ -13,6 +13,11 @@ MonoBehaviour:
   m_Name: StartGame
   m_EditorClassIdentifier: 
   achievementName: Start Game
+  achievementDescription: 
   currentProgress: 0
-  progressNeeded: 1
-  isUnlocked: 0
+  currentAchievementLevel: 0
+  isFullyUnlocked: 1
+  achievementStages:
+  - subDescription: 
+    stageLevel: 1
+    progressRequired: 1

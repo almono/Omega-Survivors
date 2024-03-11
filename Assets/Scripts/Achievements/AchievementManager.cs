@@ -25,7 +25,8 @@ public class AchievementManager : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Q))
         {
-            ShowAchievement(achievements[0]);
+            //ShowAchievement(achievements[0]);
+            achievements[1].UpdateAchievementProgress(1);
         }
     }
     public void UpdateAchievementStatus(string achievementName, float progress)
