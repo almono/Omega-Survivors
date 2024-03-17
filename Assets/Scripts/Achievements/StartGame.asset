@@ -16,7 +16,7 @@ MonoBehaviour:
   achievementDescription: 
   currentProgress: 0
   currentAchievementLevel: 0
-  isFullyUnlocked: 1
+  isFullyUnlocked: 0
   achievementStages:
   - subDescription: 
     stageLevel: 1

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class AchievementManager : MonoBehaviour
+public class AchievementManager : MonoBehaviour, IGameData
 {
     public static AchievementManager instance;
     public Achievement[] achievements;
@@ -41,5 +41,15 @@ public class AchievementManager : MonoBehaviour
             GameObject newAchievement = Instantiate(achievementBox, achievementHolder.transform.position, Quaternion.identity, achievementHolder.transform);
             newAchievement.SetActive(true);
         }
+    }
+
+    public void LoadData(GameData gameData)
+    {
+        this.achievements = gameData.achievements;
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.achievements = this.achievements;
     }
 }

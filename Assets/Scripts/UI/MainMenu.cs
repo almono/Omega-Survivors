@@ -13,6 +13,9 @@ public class MainMenu : MonoBehaviour
         mainMenu.SetActive(true);
         characterSelector.SetActive(false);
         achievementDisplay.SetActive(false);
+
+        Debug.Log(AchievementManager.instance.achievements);
+        GameDataManager.instance.LoadGame();
     }
 
     public void StartGame()
@@ -32,6 +35,13 @@ public class MainMenu : MonoBehaviour
         mainMenu.SetActive(false);
         characterSelector.SetActive(false);
         achievementDisplay.SetActive(true);
+    }
+
+    public void CloseAchievementWindow()
+    {
+        mainMenu.SetActive(true);
+        characterSelector.SetActive(false);
+        achievementDisplay.SetActive(false);
     }
 
     public void QuitGame()

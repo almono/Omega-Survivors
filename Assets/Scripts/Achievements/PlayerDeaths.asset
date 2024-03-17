@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   achievementName: Die
   achievementDescription: 
-  currentProgress: 7
-  currentAchievementLevel: 1
+  currentProgress: 0
+  currentAchievementLevel: 0
   isFullyUnlocked: 0
   achievementStages:
   - subDescription: 

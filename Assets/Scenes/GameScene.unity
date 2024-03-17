@@ -5340,6 +5340,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 633512103}
   m_CullTransparentMesh: 1
+--- !u!4 &635579465 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7709086486882781374, guid: 691129eb0bfbf6547a910dea9043cc89, type: 3}
+  m_PrefabInstance: {fileID: 1872362085211706975}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &645071571
 GameObject:
   m_ObjectHideFlags: 0
@@ -10109,7 +10114,7 @@ MonoBehaviour:
   - {fileID: 2392207625044823099, guid: 4e4e1c18f0ad89f41b2893c60b4c8aea, type: 3}
   - {fileID: 2392207625044823099, guid: 2a7117e05c8a2ff4888c854c9165c1d1, type: 3}
   - {fileID: 2392207625044823099, guid: 0ab490b208e765948beaf26972a19457, type: 3}
-  player: {fileID: 0}
+  player: {fileID: 1806960744}
   currentChunk: {fileID: 0}
   chunksParent: {fileID: 535160495}
   checkerRadius: 0.2
@@ -13957,7 +13962,7 @@ MonoBehaviour:
   m_Priority: 10
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
-  m_Follow: {fileID: 0}
+  m_Follow: {fileID: 635579465}
   m_Lens:
     FieldOfView: 34
     OrthographicSize: 8.5
@@ -14116,6 +14121,11 @@ MonoBehaviour:
   dpsValue: 0
   damageText: {fileID: 0}
   dpsText: {fileID: 0}
+--- !u!1 &1806960744 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1752850293977692021, guid: 691129eb0bfbf6547a910dea9043cc89, type: 3}
+  m_PrefabInstance: {fileID: 1872362085211706975}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1813389289
 GameObject:
   m_ObjectHideFlags: 0
